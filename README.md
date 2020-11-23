@@ -10,20 +10,20 @@ If you are using different user/password then the default settings in the MySQL 
 <b>spring.datasource.username</b>=<i>root</i></br>
 <b>spring.datasource.password</b>=<i>yourpassword</i>
 
-in the enaplo > src > main > resources > application.properties configuration file.
+in the backend > src > main > resources > application.properties configuration file.
 
 ---
 
 If you don't want init data you can set in
-sas/enaplo/src/main/java/hu/zsra/enaplo/InitData.java by turning into a comment the the testData() method
+qldt/backend/src/main/java/edu/hanu/qldt/InitData.java by turning into a comment the the testData() method
 in the line 55.
 
 ---
 
 commands to run:
 
-<b>Back-end: enaplo > mvn spring-boot:run</b> </br>
-<b>Front-end: enaplo-app > ng serve --open</b>
+<b>Back-end: cd backend && mvn spring-boot:run</b> </br>
+<b>Front-end: cd frontend && ng serve --open</b>
 
 ---
 
