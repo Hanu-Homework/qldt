@@ -1,0 +1,66 @@
+<div *ngIf="isDataAvailable">
+  <app-panel-loader></app-panel-loader>
+  <div class="container" *ngIf="userRole()">
+    <div class="container">
+      <h2>Update</h2>
+    </div>
+    <div class="container">
+      <form (ngSubmit)="onSubmit()" #form="ngForm" class="form-user">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            [disabled]="userSubmitted"
+            type="text"
+            class="form-control"
+            id="username"
+            required
+            [(ngModel)]="response.username"
+            name="username"
+            placeholder="{{ user.username }}"
+            value="{{ user.username }}"
+          />
+        </div>
+        <div class="form-group">
+          <label for="new-password">New Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="new-password"
+            required
+            [(ngModel)]="newPassword"
+            name="password"
+            placeholder="Password"
+          />
+        </div>
+        <div class="form-group">
+          <label for="re-password">Re-Enter Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="re-password"
+            required
+            [(ngModel)]="reEnterPassword"
+            name="password"
+            placeholder="Password"
+          />
+        </div>
+        <div class="form-group">
+          <label for="fullName">Fullname</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fullName"
+            required
+            [(ngModel)]="response.fullName"
+            name="fullName"
+            placeholder="Fullname"
+          />
+        </div>
+        <button type="submit" (click)="goBack()" class="btn btn-dark">
+          Back
+        </button>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

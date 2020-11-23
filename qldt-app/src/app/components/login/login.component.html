@@ -1,0 +1,83 @@
+<div class="login-container">
+  <!-- Material form login -->
+  <mdb-card class="login-card">
+    <mdb-card-header class="info-color white-text text-center py-4">
+      <h5>
+        <strong>{{ title }}</strong>
+      </h5>
+    </mdb-card-header>
+
+    <!--Card content-->
+    <mdb-card-body class="px-lg-5 pt-0">
+      <!-- Form -->
+      <form
+        #loginForm="ngForm"
+        (ngSubmit)="onSubmit()"
+        *ngIf="!submitted"
+        [formGroup]="form"
+        class="text-center"
+        style="color: #757575"
+      >
+        <p *ngIf="notification" class="notification">
+          {{ notification.msgBody }}
+        </p>
+        <!-- Email -->
+        <div class="md-form">
+          <input
+            type="email"
+            id="username"
+            class="form-control"
+            formControlName="username"
+            placeholder="Your username"
+            mdbInput
+            required
+            autofocus
+          />
+          <label for="username">Username</label>
+        </div>
+
+        <!-- Password -->
+        <div class="md-form">
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            formControlName="password"
+            placeholder=""
+            mdbInput
+            required
+            autofocus
+          />
+          <label for="password">Password</label>
+        </div>
+
+        <div class="d-flex justify-content-around">
+          <div>
+            <!-- Remember me -->
+            <mdb-checkbox>Remember me</mdb-checkbox>
+          </div>
+          <div>
+            <!-- Forgot password -->
+            <a href="">Forgot password?</a>
+          </div>
+        </div>
+
+        <!-- Sign in button -->
+        <button
+          [disabled]="!loginForm.form.valid"
+          mdbBtn
+          color="info"
+          outline="true"
+          rounded="true"
+          block="true"
+          mdbWavesEffect
+          type="submit"
+        >
+          Sign in
+        </button>
+      </form>
+      <!-- Form -->
+    </mdb-card-body>
+  </mdb-card>
+  <!-- Material form login -->
+</div>

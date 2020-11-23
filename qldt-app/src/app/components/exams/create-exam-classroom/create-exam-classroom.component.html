@@ -1,0 +1,84 @@
+<div *ngIf="isDataAvailable">
+  <app-panel-loader></app-panel-loader>
+  <div class="container" *ngIf="userRole()">
+    <div class="container">
+      <h2>Create exams for class</h2>
+    </div>
+    <div class="container">
+      <form (ngSubmit)="setBasic()" #form="ngForm" class="form-basic">
+        <div class="form-group">
+          <label for="course">Course</label>
+          <select
+            name="course"
+            class="form-control form-control-sm"
+            [(ngModel)]="selectedCourse"
+          >
+            <option *ngFor="let course of courses" [ngValue]="course">
+              {{ course.title }}/{{ course.year }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="etype">Exam Type</label>
+          <select
+            id="etype"
+            class="form-control"
+            required
+            [(ngModel)]="etype"
+            name="etype"
+          >
+            <option [ngValue]="TEST">Test</option>
+            <option [ngValue]="TOPIC_TEST">Topic Test</option>
+            <option [ngValue]="REPETITION">Repetition</option>
+            <option [ngValue]="HOMEWORK">Homework</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="written_at">Written At</label>
+          <input
+            type="date"
+            class="form-control"
+            id="written_at"
+            required
+            [(ngModel)]="written_at"
+            name="written_at"
+          />
+        </div>
+        <button type="submit" class="btn btn-dark">Create Form</button>
+      </form>
+    </div>
+    <div class="container" id="form-response" *ngIf="isBasicSet">
+      <form (ngSubmit)="onSubmit()" #form="ngForm" class="form-students">
+        <div class="form-objects">
+          <table class="table table-borderless">
+            <tbody>
+              <tr *ngFor="let exam of exams; index as i">
+                <td>
+                  <i>{{ exam.student.student.username }}</i>
+                </td>
+                <td>
+                  <b>{{ exam.student.student.fullName }}</b>
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    class="mark-input"
+                    required
+                    [(ngModel)]="marks[i]"
+                    min="1"
+                    max="5"
+                    name="mark"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button type="submit" (click)="goBack()" class="btn btn-dark">
+          Back
+        </button>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

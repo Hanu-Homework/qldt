@@ -1,0 +1,37 @@
+<div *ngIf="isDataAvailable">
+  <app-panel-loader></app-panel-loader>
+  <div
+    class="container"
+    *ngIf="userRole() === 'ROLE_ADMIN'"
+    style="margin-top: 20px"
+  >
+    <h2 style="margin-bottom: 10px">Update notification</h2>
+    <div class="container">
+      <form (ngSubmit)="onSubmit()" #form="ngForm" class="form-message">
+        <div class="form-group">
+          <label for="text">Content</label>
+          <textarea
+            class="form-control"
+            id="text"
+            required
+            [(ngModel)]="response.text"
+            name="text"
+            rows="3"
+          >
+                        {{ response.text }}
+                    </textarea
+          >
+        </div>
+        <button
+          type="submit"
+          (click)="goBack()"
+          class="btn btn-dark"
+          style="margin-right: 10px"
+        >
+          Back
+        </button>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

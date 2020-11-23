@@ -1,0 +1,49 @@
+<app-panel-loader></app-panel-loader>
+<div class="container">
+  <div id="header_message" class="container">
+    <h3>Notifications</h3>
+    <div *ngIf="isDataAvailable">
+      <button
+        *ngIf="userRole() === 'ROLE_ADMIN'"
+        (click)="create()"
+        class="btn btn-dark"
+      >
+        Create Notification
+      </button>
+    </div>
+  </div>
+  <div class="container">
+    <div *ngFor="let message of messages" class="message card">
+      <div class="card-body">
+        <p>{{ message.text }}</p>
+        <div style="display: flex">
+          <strong class="time">{{ message.createdAt | date: "medium" }}</strong>
+          <div style="flex: 2"></div>
+          <div class="footer">
+            <div
+              *ngIf="isDataAvailable"
+              class="container"
+              style="margin-top: 10px"
+            >
+              <button
+                *ngIf="userRole() === 'ROLE_ADMIN'"
+                (click)="update(message.id)"
+                class="btn btn-warning"
+                style="margin-right: 10px"
+              >
+                Update
+              </button>
+              <button
+                *ngIf="userRole() === 'ROLE_ADMIN'"
+                (click)="delete(message.id)"
+                class="btn btn-danger"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
