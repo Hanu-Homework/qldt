@@ -1,9 +1,7 @@
-import { Student } from '../model/student';
-
+import { Student } from "../model/student";
 export class ExamDTO {
-
-    student: Student;
-    mark: number;
-    written_at: string;
-    examType: string;
+  student: Student;
+  mark: number;
+  writtenAt: string;
+  examType: string;
 }

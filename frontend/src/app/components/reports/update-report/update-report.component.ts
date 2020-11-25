@@ -77,10 +77,10 @@ export class UpdateReportComponent implements OnInit {
 
   onSubmit() {
     if (this.isDataChanged()) {
-      this.response.student_id = this.report.student.id;
+      this.response.studentId = this.report.student.id;
       if (!this.selectedOption)
-        this.response.course_id = this.selectedOption.course.id;
-      else this.response.course_id = this.report.course.id;
+        this.response.courseId = this.selectedOption.course.id;
+      else this.response.courseId = this.report.course.id;
       if (this.semester) this.response.semester = Number(this.semester);
       else this.response.semester = this.report.semester;
       if (!this.response.year) this.response.year = this.report.year;

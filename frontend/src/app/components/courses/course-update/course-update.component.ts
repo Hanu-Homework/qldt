@@ -18,7 +18,7 @@ import { isAdmin } from "src/app/shared/roles";
 export class CourseUpdateComponent implements OnInit {
   currentUser: any = {};
   isDataAvailable: boolean = false;
-  course_id: number;
+  courseId: number;
   teachers: Observable<Teacher[]>;
   course = new Course();
   response = new CourseResponseDTO();
@@ -34,13 +34,13 @@ export class CourseUpdateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.course_id = this.route.snapshot.params["id"];
+    this.courseId = this.route.snapshot.params["id"];
     this.userService
       .getMyInfo()
       .toPromise()
       .then((data) => {
         this.currentUser = data;
-        this.courseService.findById(this.course_id).subscribe((data) => {
+        this.courseService.findById(this.courseId).subscribe((data) => {
           this.course = data;
           this.teacherService.findAll().subscribe((data) => {
             this.teachers = data;
@@ -57,11 +57,7 @@ export class CourseUpdateComponent implements OnInit {
   }
 
   isDataChanged() {
-    if (
-      !this.response.title ||
-      !this.response.year ||
-      !this.response.teacher_id
-    )
+    if (!this.response.title || !this.response.year || !this.response.teacherId)
       return true;
     return false;
   }
@@ -69,11 +65,11 @@ export class CourseUpdateComponent implements OnInit {
   onSubmit() {
     if (this.isDataChanged) {
       if (!this.selectedOption)
-        this.response.teacher_id = this.course.teacher.id;
-      else this.response.teacher_id = Number(this.selectedOption.id);
+        this.response.teacherId = this.course.teacher.id;
+      else this.response.teacherId = Number(this.selectedOption.id);
       if (!this.response.title) this.response.title = this.course.title;
       if (!this.response.year) this.response.year = this.course.year;
-      this.courseService.update(this.course_id, this.response).subscribe(() => {
+      this.courseService.update(this.courseId, this.response).subscribe(() => {
         this.openSnackBar("Course updated", "Ok");
         this.refresh();
       });
@@ -81,7 +77,7 @@ export class CourseUpdateComponent implements OnInit {
   }
 
   refresh() {
-    this.courseService.findById(this.course_id).subscribe((data) => {
+    this.courseService.findById(this.courseId).subscribe((data) => {
       this.course = data;
     });
     this.response = new CourseResponseDTO();

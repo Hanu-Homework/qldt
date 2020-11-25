@@ -1,7 +1,5 @@
 package edu.hanu.qldt.dto.response;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.time.LocalDate;
 
 public class StudentResponseDTO {
@@ -10,7 +8,7 @@ public class StudentResponseDTO {
 
     private LocalDate dateOfBirth;
 
-    private int start_year;
+    private int startYear;
 
     private String address;
 
@@ -20,34 +18,44 @@ public class StudentResponseDTO {
 
     private String healthCareId;
 
-    private String parent1Name;
+    private String fatherName;
 
-    private String parent2Name;
+    private String motherName;
 
-    private String parent1Phone;
+    private String fatherPhone;
 
-    private String parent2Phone;
+    private String motherPhone;
 
-    @JsonProperty("classroom_id")
-    private Long classroom_id;
+    private Long classroomId;
 
     public StudentResponseDTO() {}
 
-    public StudentResponseDTO(String username, LocalDate dateOfBirth, int start_year, String address, String gender,
-                              String educationId, String healthCareId, String parent1Name, String parent2Name,
-                              String parent1Phone, String parent2Phone, Long classroom_id) {
+    public StudentResponseDTO(
+            String username,
+            LocalDate dateOfBirth,
+            int startYear,
+            String address,
+            String gender,
+            String educationId,
+            String healthCareId,
+            String fatherName,
+            String motherName,
+            String fatherPhone,
+            String motherPhone,
+            Long classroomId
+    ) {
         this.username = username;
         this.dateOfBirth = dateOfBirth;
-        this.start_year = start_year;
+        this.startYear = startYear;
         this.address = address;
         this.gender = gender;
         this.educationId = educationId;
         this.healthCareId = healthCareId;
-        this.parent1Name = parent1Name;
-        this.parent2Name = parent2Name;
-        this.parent1Phone = parent1Phone;
-        this.parent2Phone = parent2Phone;
-        this.classroom_id = classroom_id;
+        this.fatherName = fatherName;
+        this.motherName = motherName;
+        this.fatherPhone = fatherPhone;
+        this.motherPhone = motherPhone;
+        this.classroomId = classroomId;
     }
 
     public String getUsername() {
@@ -66,12 +74,12 @@ public class StudentResponseDTO {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public int getStart_year() {
-        return start_year;
+    public int getStartYear() {
+        return startYear;
     }
 
-    public void setStart_year(int start_year) {
-        this.start_year = start_year;
+    public void setStartYear(int startYear) {
+        this.startYear = startYear;
     }
 
     public String getAddress() {
@@ -106,43 +114,43 @@ public class StudentResponseDTO {
         this.healthCareId = healthCareId;
     }
 
-    public String getParent1Name() {
-        return parent1Name;
+    public String getFatherName() {
+        return fatherName;
     }
 
-    public void setParent1Name(String parent1Name) {
-        this.parent1Name = parent1Name;
+    public void setFatherName(String fatherName) {
+        this.fatherName = fatherName;
     }
 
-    public String getParent2Name() {
-        return parent2Name;
+    public String getMotherName() {
+        return motherName;
     }
 
-    public void setParent2Name(String parent2Name) {
-        this.parent2Name = parent2Name;
+    public void setMotherName(String motherName) {
+        this.motherName = motherName;
     }
 
-    public String getParent1Phone() {
-        return parent1Phone;
+    public String getFatherPhone() {
+        return fatherPhone;
     }
 
-    public void setParent1Phone(String parent1Phone) {
-        this.parent1Phone = parent1Phone;
+    public void setFatherPhone(String fatherPhone) {
+        this.fatherPhone = fatherPhone;
     }
 
-    public String getParent2Phone() {
-        return parent2Phone;
+    public String getMotherPhone() {
+        return motherPhone;
     }
 
-    public void setParent2Phone(String parent2Phone) {
-        this.parent2Phone = parent2Phone;
+    public void setMotherPhone(String motherPhone) {
+        this.motherPhone = motherPhone;
     }
 
-    public Long getClassroom_id() {
-        return classroom_id;
+    public Long getClassroomId() {
+        return classroomId;
     }
 
-    public void setClassroom_id(Long classroom_id) {
-        this.classroom_id = classroom_id;
+    public void setClassroomId(Long classroomId) {
+        this.classroomId = classroomId;
     }
 }

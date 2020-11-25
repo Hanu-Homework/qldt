@@ -32,20 +32,20 @@ public class RemarkController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TEACHER') or hasRole('ROLE_HEADTEACHER')" +
-            "or @securityService.hasStudentAccess(principal.id, #student_id)")
+            "or @securityService.hasStudentAccess(principal.id, #studentId)")
     @ApiOperation(value = "${RemarkController.findAllByStudent}")
     @ApiResponses(value = {
             @ApiResponse(code = 400, message = "Something went wrong"),
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Remarks don't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @GetMapping(value = "/remarks/student/{student_id}")
-    public List<Remark> findAllByStudent(@PathVariable Long student_id) {
-        return remarkService.findAllByStudent(student_id);
+    @GetMapping(value = "/remarks/student/{studentId}")
+    public List<Remark> findAllByStudent(@PathVariable Long studentId) {
+        return remarkService.findAllByStudent(studentId);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TEACHER') or hasRole('ROLE_HEADTEACHER')" +
-            "or @securityService.hasStudentAccess(principal.id, #student_id)")
+//    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TEACHER') or hasRole('ROLE_HEADTEACHER')" +
+//            "or @securityService.hasStudentAccess(principal.id, #student_id)")
     @ApiOperation(value = "${RemarkController.findById}")
     @ApiResponses(value = {
             @ApiResponse(code = 400, message = "Something went wrong"),
@@ -54,6 +54,7 @@ public class RemarkController {
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
     @GetMapping(value = "/remarks/{id}")
     public Remark findById(@PathVariable Long id) {
+        System.out.println("Invoked findById");
         return remarkService.findById(id);
     }
 

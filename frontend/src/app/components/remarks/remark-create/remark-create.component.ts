@@ -42,7 +42,7 @@ export class RemarkCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    this.remark.student_id = this.student_id;
+    this.remark.studentId = this.student_id;
     this.remarkService.create(this.remark).subscribe(
       () => {
         this.reset();

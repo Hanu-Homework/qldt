@@ -81,7 +81,7 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Course create(CourseResponseDTO courseResponseDTO) {
         /* Finds teacher by id. */
-        Teacher teacher = teacherRepository.getOne(courseResponseDTO.getTeacher_id());
+        Teacher teacher = teacherRepository.getOne(courseResponseDTO.getTeacherId());
         return courseRepository.save(new Course(
                 courseResponseDTO.getTitle(),
                 courseResponseDTO.getYear(),
@@ -102,7 +102,7 @@ public class CourseServiceImpl implements CourseService {
         /* Finds course by id. */
         Course course = courseRepository.getOne(id);
         /* Finds teacher by id. */
-        Teacher teacher = teacherRepository.getOne(courseResponseDTO.getTeacher_id());
+        Teacher teacher = teacherRepository.getOne(courseResponseDTO.getTeacherId());
 
         /* Updates the old course with a new data. */
         course.setTeacher(teacher);

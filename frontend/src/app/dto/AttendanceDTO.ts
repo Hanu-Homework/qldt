@@ -1,7 +1,5 @@
-import { Student } from '../model/student';
-
+import { Student } from "../model/student";
 export class AttendanceDTO {
-
-    student: Student;
-    isMiss: boolean;
+  student: Student;
+  isMiss: boolean;
 }

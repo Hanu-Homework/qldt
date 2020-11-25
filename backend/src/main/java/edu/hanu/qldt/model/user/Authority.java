@@ -16,7 +16,7 @@ public class Authority implements GrantedAuthority {
      * Id field [GENERATED AUTOMATICALLY].
      */
     @Id
-    @Column(name="id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -24,7 +24,7 @@ public class Authority implements GrantedAuthority {
      * Role name.
      */
     @Enumerated(EnumType.STRING)
-    @Column(name="name")
+    @Column(name = "name")
     private UserRoleName name;
 
 

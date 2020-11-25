@@ -14,7 +14,7 @@ import { isStudent, isTeacher, isAdmin } from "src/app/shared/roles";
 })
 export class StudentClassroomListComponent implements OnInit {
   classroom_id: number;
-  searchText;
+  searchText: any;
   students: Observable<Student[]>;
   isDataAvailable: boolean = false;
   currentUser: any = {};

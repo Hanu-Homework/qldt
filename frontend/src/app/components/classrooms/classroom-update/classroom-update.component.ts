@@ -58,10 +58,10 @@ export class ClassroomUpdateComponent implements OnInit {
 
   isDataChanged() {
     if (
-      !this.response.end_year ||
-      !this.response.headTeacher_id ||
+      !this.response.endYear ||
+      !this.response.headTeacherId ||
       !this.response.letter ||
-      !this.response.start_year ||
+      !this.response.startYear ||
       this.response.year
     )
       return true;
@@ -70,14 +70,14 @@ export class ClassroomUpdateComponent implements OnInit {
 
   onSubmit() {
     if (this.isDataChanged) {
-      this.response.headTeacher_id = Number(this.selectedOption.id);
-      if (!this.response.headTeacher_id)
-        this.response.headTeacher_id = this.classroom.head_teacher.id;
-      if (!this.response.end_year)
-        this.response.end_year = this.classroom.end_year;
+      this.response.headTeacherId = Number(this.selectedOption.id);
+      if (!this.response.headTeacherId)
+        this.response.headTeacherId = this.classroom.headTeacher.id;
+      if (!this.response.endYear)
+        this.response.endYear = this.classroom.endYear;
       if (!this.response.letter) this.response.letter = this.classroom.letter;
-      if (!this.response.start_year)
-        this.response.start_year = this.classroom.start_year;
+      if (!this.response.startYear)
+        this.response.startYear = this.classroom.startYear;
       if (!this.response.year) this.response.year = this.classroom.year;
       this.classroomService.update(this.id, this.response).subscribe(
         () => {

@@ -2,7 +2,7 @@
   <app-panel-loader></app-panel-loader>
   <div class="container" *ngIf="userRole()">
     <div class="container">
-      <h2>Create</h2>
+      <h2>Create New Classroom</h2>
     </div>
     <div class="container">
       <form (ngSubmit)="onSubmit()" #form="ngForm" class="form-classroom">
@@ -35,7 +35,7 @@
             class="form-control"
             id="start_year"
             required
-            [(ngModel)]="classroom.start_year"
+            [(ngModel)]="classroom.startYear"
             name="start_year"
           />
         </div>
@@ -46,7 +46,7 @@
             class="form-control"
             id="end_year"
             required
-            [(ngModel)]="classroom.end_year"
+            [(ngModel)]="classroom.endYear"
             name="end_year"
           />
         </div>

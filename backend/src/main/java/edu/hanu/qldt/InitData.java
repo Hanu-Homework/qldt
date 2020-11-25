@@ -84,7 +84,7 @@ public class InitData {
             userService.save(new UserResponseDTO(username, password, "admin", "ROLE_ADMIN"));
             Logger.info("Username: {0}\nPassword: {1}", username, password);
         }
-        //testData();
+        // testData();
     }
 
     private void testData() {
@@ -258,7 +258,7 @@ public class InitData {
                 int mark = random.nextInt(5) + 1;
                 examResponseDTOS.add(new ExamResponseDTO(
                         mark,
-                        examDTO.getWritten_at(),
+                        examDTO.getWrittenAt(),
                         examTypes.get(random.nextInt(examTypes.size())).toString(),
                         course.getId(),
                         examDTO.getStudent().getId()
@@ -348,9 +348,9 @@ public class InitData {
             for (int j = 0; j < 5; j++) {
                 timeTableEntityResponseDTOS[i][j] = new TimeTableEntityResponseDTO();
                 Course course = courses.get(random.nextInt(courses.size()));
-                timeTableEntityResponseDTOS[i][j].setClassroom_id(1L);
-                timeTableEntityResponseDTOS[i][j].setCourse_id(course.getId());
-                timeTableEntityResponseDTOS[i][j].setRoom_id(
+                timeTableEntityResponseDTOS[i][j].setClassroomId(1L);
+                timeTableEntityResponseDTOS[i][j].setCourseId(course.getId());
+                timeTableEntityResponseDTOS[i][j].setRoomId(
                         rooms.get(random.nextInt(rooms.size())).getId()
                 );
                 timeTableEntityResponseDTOS[i][j].setDay(j);
@@ -362,9 +362,9 @@ public class InitData {
             for (int j = 0; j < 5; j++) {
                 timeTableEntityResponseDTOS[i][j] = new TimeTableEntityResponseDTO();
                 Course course = courses.get(random.nextInt(courses.size()));
-                timeTableEntityResponseDTOS[i][j].setClassroom_id(2L);
-                timeTableEntityResponseDTOS[i][j].setCourse_id(course.getId());
-                timeTableEntityResponseDTOS[i][j].setRoom_id(
+                timeTableEntityResponseDTOS[i][j].setClassroomId(2L);
+                timeTableEntityResponseDTOS[i][j].setCourseId(course.getId());
+                timeTableEntityResponseDTOS[i][j].setRoomId(
                         rooms.get(random.nextInt(rooms.size())).getId()
                 );
                 timeTableEntityResponseDTOS[i][j].setDay(j);

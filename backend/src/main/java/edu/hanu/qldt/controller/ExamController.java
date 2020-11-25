@@ -41,10 +41,10 @@ public class ExamController {
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Exams don't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @PostMapping(value = "/exams/student/{student_id}")
-    public List<Exam> findAllByStudent(@PathVariable Long student_id,
-                                       @RequestBody Long course_id) {
-        return examService.findAllByStudent(student_id, course_id);
+    @PostMapping(value = "/exams/student/{studentId}")
+    public List<Exam> findAllByStudent(@PathVariable Long studentId,
+                                       @RequestBody Long courseId) {
+        return examService.findAllByStudent(studentId, courseId);
     }
 
     @PreAuthorize("hasRole('ROLE_TEACHER') or hasRole('ROLE_HEADTEACHER')")
@@ -104,11 +104,11 @@ public class ExamController {
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Classroom doesn't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @PostMapping(value = "/exams/form/{classroom_id}/{examType}")
-    public List<ExamDTO> makeExamsFormToClassroom(@PathVariable Long classroom_id,
-                                                  @RequestBody String written_at,
+    @PostMapping(value = "/exams/form/{classroomId}/{examType}")
+    public List<ExamDTO> makeExamsFormToClassroom(@PathVariable Long classroomId,
+                                                  @RequestBody String writtenAt,
                                                   @PathVariable String examType) {
-        return examService.makeExamsFormToClassroom(classroom_id,LocalDate.parse(written_at), examType);
+        return examService.makeExamsFormToClassroom(classroomId,LocalDate.parse(writtenAt), examType);
     }
 
     @PreAuthorize("hasRole('ROLE_TEACHER') or hasRole('ROLE_HEADTEACHER')")

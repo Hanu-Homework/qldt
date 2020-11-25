@@ -74,15 +74,15 @@ public class ExamServiceImpl implements ExamService {
     @Override
     public Exam create(ExamResponseDTO examResponseDTO) {
         /* Finds student by id. */
-        Student student = studentRepository.getOne(examResponseDTO.getStudent_id());
+        Student student = studentRepository.getOne(examResponseDTO.getStudentId());
         /* Finds course by id. */
-        Course course = courseRepository.getOne(examResponseDTO.getCourse_id());
+        Course course = courseRepository.getOne(examResponseDTO.getCourseId());
 
 
         if(examResponseDTO.getMark() <= 1 && examResponseDTO.getMark() >= 5) {
             return examRepository.save(new Exam(
                     examResponseDTO.getMark(),
-                    examResponseDTO.getWritten_at(),
+                    examResponseDTO.getWrittenAt(),
                     ExamType.valueOf(examResponseDTO.getExamType()),
                     course,
                     student
@@ -106,7 +106,7 @@ public class ExamServiceImpl implements ExamService {
 
         if(examResponseDTO.getMark() >= 1 && examResponseDTO.getMark() <= 5) {
             exam.setMark(examResponseDTO.getMark());
-            exam.setWrittenAt(examResponseDTO.getWritten_at());
+            exam.setWrittenAt(examResponseDTO.getWrittenAt());
         }
         return examRepository.save(exam);
     }
@@ -150,15 +150,15 @@ public class ExamServiceImpl implements ExamService {
     public List<Exam> createExamsFromForm(List<ExamResponseDTO> examResponseDTOS) {
         List<Exam> result = new ArrayList<>();
         /* Finds course by id. */
-        Course course = courseRepository.getOne(examResponseDTOS.get(0).getCourse_id());
+        Course course = courseRepository.getOne(examResponseDTOS.get(0).getCourseId());
 
         for(ExamResponseDTO examResponseDTO : examResponseDTOS) {
             /* Finds student by id. */
             if(examResponseDTO.getMark() >= 1 && examResponseDTO.getMark() <= 5) {
-                Student student = studentRepository.getOne(examResponseDTO.getStudent_id());
+                Student student = studentRepository.getOne(examResponseDTO.getStudentId());
                 Exam exam = new Exam(
                         examResponseDTO.getMark(),
-                        examResponseDTO.getWritten_at(),
+                        examResponseDTO.getWrittenAt(),
                         ExamType.valueOf(examResponseDTO.getExamType()),
                         course,
                         student

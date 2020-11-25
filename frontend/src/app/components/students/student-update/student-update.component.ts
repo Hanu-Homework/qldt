@@ -29,7 +29,7 @@ export class StudentUpdateComponent implements OnInit {
   classrooms: Observable<Classroom[]>;
   selectedOption: any = {};
   selectedOptionGender: any = {};
-  genders: string[] = ["Male", "Female", "Other"];
+  genders: string[] = ["MALE", "FEMALE", "OTHER"];
 
   constructor(
     private userService: UserService,
@@ -70,15 +70,15 @@ export class StudentUpdateComponent implements OnInit {
   isDataChanged() {
     if (
       !this.response.address ||
-      !this.response.parent1Name ||
-      !this.response.parent2Name ||
-      !this.response.parent1Phone ||
-      !this.response.parent2Phone ||
+      !this.response.fatherName ||
+      !this.response.motherName ||
+      !this.response.fatherPhone ||
+      !this.response.motherPhone ||
       !this.response.dateOfBirth ||
       !this.response.educationId ||
-      !this.response.start_year ||
+      !this.response.startYear ||
       !this.response.healthCareId ||
-      !this.response.classroom_id ||
+      !this.response.classroomId ||
       !this.response.gender
     )
       return true;
@@ -90,25 +90,25 @@ export class StudentUpdateComponent implements OnInit {
       if (!this.selectedOptionGender)
         if (!this.response.address)
           this.response.address = this.student.address;
-      if (!this.response.parent1Name)
-        this.response.parent1Name = this.student.father_name;
-      if (!this.response.parent2Name)
-        this.response.parent2Name = this.student.mother_name;
-      if (!this.response.parent1Phone)
-        this.response.parent1Phone = this.student.father_phone;
-      if (!this.response.parent2Phone)
-        this.response.parent2Phone = this.student.mother_phone;
+      if (!this.response.fatherName)
+        this.response.fatherName = this.student.fatherName;
+      if (!this.response.motherName)
+        this.response.motherName = this.student.motherName;
+      if (!this.response.fatherPhone)
+        this.response.fatherPhone = this.student.fatherPhone;
+      if (!this.response.motherPhone)
+        this.response.motherPhone = this.student.motherPhone;
       if (!this.response.dateOfBirth)
-        this.response.dateOfBirth = this.student.date_of_birth;
+        this.response.dateOfBirth = this.student.dateOfBirth;
       if (!this.response.educationId)
-        this.response.educationId = this.student.education_id;
-      if (!this.response.start_year)
-        this.response.start_year = this.student.start_year;
+        this.response.educationId = this.student.educationId;
+      if (!this.response.startYear)
+        this.response.startYear = this.student.startYear;
       if (!this.response.healthCareId)
-        this.response.healthCareId = this.student.healthCare_id;
+        this.response.healthCareId = this.student.healthCareId;
       if (!this.selectedOption)
-        this.response.classroom_id = this.student.classroom.id;
-      else this.response.classroom_id = Number(this.selectedOption.id);
+        this.response.classroomId = this.student.classroom.id;
+      else this.response.classroomId = Number(this.selectedOption.id);
       if (!this.selectedOptionGender)
         this.response.gender = this.student.gender;
       else this.response.gender = this.selectedOptionGender;
@@ -157,16 +157,12 @@ export class StudentUpdateComponent implements OnInit {
     if (
       isAdmin(this.currentUser, this.router) ||
       isTeacher(this.currentUser, this.router) ||
-      isIdMatches(
-        this.currentUser,
-        this.router,
-        this.student.id,
-        this.studentService
-      )
+      isIdMatches(this.currentUser, this.student)
     ) {
       return true;
     } else {
       this.router.navigate(["403"]);
+      return false;
     }
   }
 }

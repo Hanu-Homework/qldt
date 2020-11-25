@@ -22,7 +22,7 @@ public interface AdminService {
      * Creates an archive file, that contains all student reports.
      *
      */
-    String createArchive();
+    void createArchive();
 
     /**
      * Returns a List of Archive Report.

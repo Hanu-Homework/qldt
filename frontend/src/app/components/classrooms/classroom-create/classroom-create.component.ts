@@ -49,7 +49,7 @@ export class ClassroomCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    this.classroom.headTeacher_id = Number(this.selectedOption.id);
+    this.classroom.headTeacherId = Number(this.selectedOption.id);
     this.classroomService.create(this.classroom).subscribe(
       () => {
         this.reset();

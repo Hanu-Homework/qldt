@@ -18,31 +18,33 @@
             </option>
           </select>
         </div>
-        <div class="form-group">
-          <label for="year">Year</label>
-          <input
-            type="number"
-            class="form-control"
-            id="year"
-            required
-            [(ngModel)]="report.year"
-            min="1"
-            max="14"
-            name="year"
-          />
-        </div>
-        <div class="form-group">
-          <label for="semester">Semester</label>
-          <input
-            type="number"
-            class="form-control"
-            id="semester"
-            required
-            [(ngModel)]="report.semester"
-            min="1"
-            max="2"
-            name="semester"
-          />
+        <div *ngFor="let report of reports">
+          <div class="form-group">
+            <label for="year">Year</label>
+            <input
+              type="number"
+              class="form-control"
+              id="year"
+              required
+              [(ngModel)]="report.year"
+              min="1"
+              max="14"
+              name="year"
+            />
+          </div>
+          <div class="form-group">
+            <label for="semester">Semester</label>
+            <input
+              type="number"
+              class="form-control"
+              id="semester"
+              required
+              [(ngModel)]="report.semester"
+              min="1"
+              max="2"
+              name="semester"
+            />
+          </div>
         </div>
         <button type="submit" class="btn btn-dark">Create Form</button>
       </form>

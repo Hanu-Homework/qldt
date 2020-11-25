@@ -1,0 +1,34 @@
+<div *ngIf="isDataAvailable">
+  <app-panel-loader></app-panel-loader>
+  <div class="container" *ngIf="userRole()" style="margin-top: 10px">
+    <div class="container">
+      <h2>Teacher Information</h2>
+    </div>
+    <div class="container">
+      <table class="table table-bordered" *ngIf="teacher">
+        <tbody>
+          <tr>
+            <td>Username</td>
+            <td>{{ teacher.teacher.username }}</td>
+          </tr>
+          <tr>
+            <td>Fullname</td>
+            <td>{{ teacher.teacher.fullName }}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{{ teacher.email }}</td>
+          </tr>
+          <tr>
+            <td>Start year</td>
+            <td>{{ teacher.phone }}</td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>{{ teacher.id }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,5 @@
-import { Course } from '../model/course';
-
+import { Course } from "../model/course";
 export class ClassroomCourseResultDTO {
-
-    course: Course;
-    result: number;
+  course: Course;
+  result: number;
 }

@@ -31,17 +31,24 @@ public class TimeTableEntity {
     /**
      * Empty constructor.
      */
-    public TimeTableEntity() {}
+    public TimeTableEntity() {
+    }
 
     /**
      * Constructor to make a new instance.
      *
-     * @param day Day when course hold.
+     * @param day          Day when course hold.
      * @param lessonNumber Time when course hold.
-     * @param course The course.
-     * @param classroom The class.
+     * @param course       The course.
+     * @param classroom    The class.
      */
-    public TimeTableEntity(int day, int lessonNumber, Room room, Course course, Classroom classroom) {
+    public TimeTableEntity(
+            int day,
+            int lessonNumber,
+            Room room,
+            Course course,
+            Classroom classroom
+    ) {
         this.day = day;
         this.lessonNumber = lessonNumber;
         this.room = room;
@@ -59,7 +66,7 @@ public class TimeTableEntity {
      * The class.
      */
     @ManyToOne
-    @JoinColumn(name="classroom_id")
+    @JoinColumn(name = "classroom_id")
     private Classroom classroom;
 
     /**
@@ -67,7 +74,7 @@ public class TimeTableEntity {
      * the lesson.
      */
     @ManyToOne
-    @JoinColumn(name="room_id")
+    @JoinColumn(name = "room_id")
     private Room room;
 
     public Long getId() {

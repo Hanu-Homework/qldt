@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import java.util.stream.Collectors;
 
 /**
@@ -28,20 +29,44 @@ import java.util.stream.Collectors;
 public class AdminServiceImpl implements AdminService {
 
     private final ClassroomRepository classroomRepository;
+
     private final StudentRepository studentRepository;
+
     private final ExamRepository examRepository;
+
     private final ReportRepository reportRepository;
+
     private final TimeTableRepository timeTableRepository;
+
     private final AttendanceRepository attendanceRepository;
+
     private final ArchiveReportRepository archiveReportRepository;
+
     private final ArchiveRepository archiveRepository;
+
     private final UserRepository userRepository;
+
     final TeacherRepository teacherRepository;
+
     private final AuthorityService authService;
+
     private final RemarkRepository remarkRepository;
 
     @Autowired
-    public AdminServiceImpl(AttendanceRepository attendanceRepository, ClassroomRepository classroomRepository, RemarkRepository remarkRepository, StudentRepository studentRepository, ExamRepository examRepository, ReportRepository reportRepository, TimeTableRepository timeTableRepository, ArchiveReportRepository archiveReportRepository, ArchiveRepository archiveRepository, UserRepository userRepository, TeacherRepository teacherRepository, AuthorityService authService) {
+    public AdminServiceImpl(
+            AttendanceRepository attendanceRepository,
+            ClassroomRepository classroomRepository,
+            RemarkRepository remarkRepository,
+            StudentRepository studentRepository,
+            ExamRepository examRepository,
+            ReportRepository reportRepository,
+            TimeTableRepository timeTableRepository,
+            ArchiveReportRepository archiveReportRepository,
+            ArchiveRepository archiveRepository,
+            UserRepository userRepository,
+            TeacherRepository teacherRepository,
+            AuthorityService authService
+    ) {
         this.attendanceRepository = attendanceRepository;
         this.classroomRepository = classroomRepository;
         this.remarkRepository = remarkRepository;
@@ -68,27 +93,25 @@ public class AdminServiceImpl implements AdminService {
         reportRepository.deleteAll();
         examRepository.deleteAll();
         remarkRepository.deleteAll();
-        for(Classroom classroom: classroomRepository.findAll()) {
-            int new_year = classroom.getYear() + 1;
-            classroom.setYear(new_year);
+        for (Classroom classroom : classroomRepository.findAll()) {
+            int newYear = classroom.getYear() + 1;
+            classroom.setYear(newYear);
             classroomRepository.save(classroom);
         }
     }
 
     /**
      * Creates an archive file, that contains all student reports.
-     *
      */
     @Override
-    public String createArchive() {
-        for(Student student: studentRepository.findAll()) {
+    public void createArchive() {
+        for (Student student : studentRepository.findAll()) {
             saveReportsByStudent(student.getId(), new Archive(
                     student.getStudent().getUsername(),
                     student.getStudent().getFullName(),
                     student.getDateOfBirth()
             ));
         }
-        return "Archived";
     }
 
     /**
@@ -116,38 +139,39 @@ public class AdminServiceImpl implements AdminService {
      * If, the class finished the school, this function delete the class
      * and also all student from the class.
      *
-     * @param classroom_id Id of the classroom.
+     * @param classroomId Id of the classroom.
      */
     @Override
-    public void finished(Long classroom_id) {
-        List<Student> students = getStudentsFromClassroom(classroom_id);
-        for(Student student: students) {
+    public void finished(Long classroomId) {
+        List<Student> students = getStudentsFromClassroom(classroomId);
+        for (Student student : students) {
             studentRepository.delete(student);
             userRepository.delete(student.getStudent());
-            deleteClassroomById(classroom_id);
+            deleteClassroomById(classroomId);
         }
-        classroomRepository.delete(classroomRepository.getOne(classroom_id));
+        classroomRepository.delete(classroomRepository.getOne(classroomId));
     }
 
     /**
      * This function finds all report by student and returns with a list of
      * ArchiveReport. !IMPORTANT! The collected reports are from 2nd Semester.
      *
-     * @param student_id Id of the student.
+     * @param studentId Id of the student.
      * @return a List of ArchiveReport.
      */
-    private List<ArchiveReport> saveReportsByStudent(Long student_id, Archive archive) {
+    private List<ArchiveReport> saveReportsByStudent(Long studentId, Archive archive) {
+
         List<ArchiveReport> result = new ArrayList<>();
-        for(Report report: reportRepository.findAll()) {
-            if(report.getStudent().getId().equals(student_id) && report.getSemester() == 2) {
+        for (Report report : reportRepository.findAll()) {
+            if (report.getStudent().getId().equals(studentId) && report.getSemester() == 2) {
                 ArchiveReport archiveReport = new ArchiveReport(
                         report.getCourse().getTitle(),
                         report.getYear(),
                         report.getMark(),
                         archiveRepository.save(archive)
                 );
-                for(ArchiveReport archiver: archiveReportRepository.findAll()) {
-                    if(!archiver.equals(archiveReport)) {
+                for (ArchiveReport archiver : archiveReportRepository.findAll()) {
+                    if (!archiver.equals(archiveReport)) {
                         result.add(archiveReport);
                         archiveReportRepository.save(archiveReport);
                     }

@@ -49,7 +49,7 @@ public class CourseController {
             @ApiResponse(code = 404, message = "Course doesn't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
     @GetMapping(value = "/courses/{id}")
-    public Course FindById(@PathVariable Long id) {
+    public Course findById(@PathVariable Long id) {
         return courseService.findById(id);
     }
 
@@ -59,9 +59,9 @@ public class CourseController {
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Course doesn't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @GetMapping(value = "/courses/teacher/{teacher_id}")
-    public List<Course> getCoursesByTeacherId(@PathVariable Long teacher_id) {
-        return  courseService.getCoursesByTeacherId(teacher_id);
+    @GetMapping(value = "/courses/teacher/{teacherId}")
+    public List<Course> getCoursesByTeacherId(@PathVariable Long teacherId) {
+        return  courseService.getCoursesByTeacherId(teacherId);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -109,11 +109,11 @@ public class CourseController {
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Course or Student doesn't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @PutMapping(value = "/courses/setCourse/{student_id}")
-    public String setCourse(@PathVariable Long student_id,
-                            @RequestBody Long course_id) {
-        courseService.setCourse(student_id, course_id);
-        return course_id.toString();
+    @PutMapping(value = "/courses/setCourse/{studentId}")
+    public String setCourse(@PathVariable Long studentId,
+                            @RequestBody Long courseId) {
+        courseService.setCourse(studentId, courseId);
+        return courseId.toString();
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -123,10 +123,10 @@ public class CourseController {
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Course or Student doesn't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @PutMapping(value = "/courses/unsetCourse/{student_id}")
-    public String unsetCourse(@PathVariable Long student_id,
-                            @RequestBody Long course_id) {
-        courseService.unsetCourse(student_id, course_id);
-        return course_id.toString();
+    @PutMapping(value = "/courses/unsetCourse/{studentId}")
+    public String unsetCourse(@PathVariable Long studentId,
+                            @RequestBody Long courseId) {
+        courseService.unsetCourse(studentId, courseId);
+        return courseId.toString();
     }
 }

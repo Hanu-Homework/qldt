@@ -2,7 +2,7 @@
   <app-panel-loader></app-panel-loader>
   <div class="container" *ngIf="userRole()">
     <div class="container">
-      <h2>Student</h2>
+      <h2 style="margin-top: 30px">Student</h2>
     </div>
     <div class="container">
       <table class="table table-bordered" *ngIf="student">
@@ -21,7 +21,7 @@
           </tr>
           <tr>
             <td>Start year</td>
-            <td>{{ student.start_year }}</td>
+            <td>{{ student.startYear }}</td>
           </tr>
           <tr>
             <td>Address</td>
@@ -40,20 +40,20 @@
             <td>{{ student.healthCareId }}</td>
           </tr>
           <tr>
-            <td>Parent 1</td>
-            <td>{{ student.parent1Name }}</td>
+            <td>Father Name</td>
+            <td>{{ student.fatherName }}</td>
           </tr>
           <tr>
-            <td>Parent 2</td>
-            <td>{{ student.parent2Name }}</td>
+            <td>Mother Name</td>
+            <td>{{ student.motherName }}</td>
           </tr>
           <tr>
-            <td>Phone number 1</td>
-            <td>{{ student.parent1Phone }}</td>
+            <td>Father Phone Number</td>
+            <td>{{ student.fatherPhone }}</td>
           </tr>
           <tr>
-            <td>Phone number 2</td>
-            <td>{{ student.parent2Phone }}</td>
+            <td>Mother Phone Number</td>
+            <td>{{ student.motherPhone }}</td>
           </tr>
           <tr>
             <td>Classroom</td>

@@ -34,12 +34,13 @@ public class Remark {
     /**
      * Empty constructor.
      */
-    public Remark() {}
+    public Remark() {
+    }
 
     /**
      * Constructor to make a new instance.
      *
-     * @param text Message to student.
+     * @param text    Message to student.
      * @param student Student who get the remark.
      */
     public Remark(String text, Student student) {
@@ -51,7 +52,7 @@ public class Remark {
      * Student who get the remark.
      */
     @ManyToOne
-    @JoinColumn(name="student_id")
+    @JoinColumn(name = "student_id")
     private Student student;
 
     public Long getId() {

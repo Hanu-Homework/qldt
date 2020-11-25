@@ -156,7 +156,7 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public void setTeacherPreferences(TeacherPreferenceResponseDTO teacherPreferenceResponseDTO) {
         teacherPreferenceRepository.setPreferences(
-                teacherPreferenceResponseDTO.getTeacher_id(),
+                teacherPreferenceResponseDTO.getTeacherId(),
                 teacherPreferenceResponseDTO.getTestWeight(),
                 teacherPreferenceResponseDTO.getTopicTestWeight(),
                 teacherPreferenceResponseDTO.getRepetitionWeight(),

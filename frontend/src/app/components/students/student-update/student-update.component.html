@@ -11,6 +11,7 @@
         (click)="userUpdate()"
         id="account"
         class="btn btn-dark"
+        style="margin-bottom: 20px"
       >
         Account settings
       </button>
@@ -27,17 +28,17 @@
             value="{{ student.dateOfBirth }}"
           />
         </div>
-        <div class="form-group" *ngIf="userRole() === 'ROLE_ADMIN'">
+        <div class="form-group" *ngIf="userRole()">
           <label for="start_year">Start year</label>
           <input
             type="number"
             class="form-control"
             id="start_year"
             required
-            [(ngModel)]="response.start_year"
+            [(ngModel)]="response.startYear"
             name="start_year"
-            placeholder="{{ student.start_year }}"
-            value="{{ student.start_year }}"
+            placeholder="{{ student.startYear }}"
+            value="{{ student.startYear }}"
           />
         </div>
         <div class="form-group">
@@ -65,7 +66,7 @@
             </option>
           </select>
         </div>
-        <div class="form-group" *ngIf="userRole() === 'ROLE_ADMIN'">
+        <div class="form-group" *ngIf="userRole()">
           <label for="educationId">Education ID</label>
           <input
             type="text"
@@ -78,7 +79,7 @@
             value="{{ student.educationId }}"
           />
         </div>
-        <div class="form-group" *ngIf="userRole() === 'ROLE_ADMIN'">
+        <div class="form-group" *ngIf="userRole()">
           <label for="healthCareId">Health Care ID</label>
           <input
             type="text"
@@ -92,54 +93,54 @@
           />
         </div>
         <div class="form-group">
-          <label for="parent1Name">Parent 1</label>
+          <label for="parent1Name">Father Name</label>
           <input
             type="text"
             class="form-control"
             id="parent1Name"
-            [(ngModel)]="response.parent1Name"
+            [(ngModel)]="response.fatherName"
             name="parent1Name"
-            placeholder="{{ student.parent1Name }}"
-            value="{{ student.parent1Name }}"
+            placeholder="{{ student.fatherName }}"
+            value="{{ student.fatherName }}"
           />
         </div>
         <div class="form-group">
-          <label for="parent2Name">Parent 2</label>
+          <label for="parent2Name">Mother Name</label>
           <input
             type="text"
             class="form-control"
             id="parent2Name"
-            [(ngModel)]="response.parent2Name"
+            [(ngModel)]="response.motherName"
             name="parent2Name"
-            placeholder="{{ student.parent2Name }}"
-            value="{{ student.parent2Name }}"
+            placeholder="{{ student.motherName }}"
+            value="{{ student.motherName }}"
           />
         </div>
         <div class="form-group">
-          <label for="parent1Phone">Parent 1 Phone</label>
+          <label for="parent1Phone">Father Phone Number</label>
           <input
             type="text"
             class="form-control"
             id="parent1Phone"
-            [(ngModel)]="response.parent1Phone"
+            [(ngModel)]="response.fatherPhone"
             name="parent1Phone"
-            placeholder="{{ student.parent1Phone }}"
-            value="{{ student.parent1Phone }}"
+            placeholder="{{ student.fatherPhone }}"
+            value="{{ student.fatherPhone }}"
           />
         </div>
         <div class="form-group">
-          <label for="parent2Phone">Parent 2 Phone</label>
+          <label for="parent2Phone">Mother Phone Number</label>
           <input
             type="text"
             class="form-control"
             id="parent2Phone"
-            [(ngModel)]="response.parent2Phone"
+            [(ngModel)]="response.motherPhone"
             name="parent2Phone"
-            placeholder="{{ student.parent2Phone }}"
-            value="{{ student.parent2Phone }}"
+            placeholder="{{ student.motherPhone }}"
+            value="{{ student.motherPhone }}"
           />
         </div>
-        <div class="form-group" *ngIf="userRole() === 'ROLE_ADMIN'">
+        <div class="form-group" *ngIf="userRole()">
           <label for="classroom">Classroom</label>
           <select
             name="classroom"

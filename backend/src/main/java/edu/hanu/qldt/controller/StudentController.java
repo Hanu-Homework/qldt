@@ -61,17 +61,17 @@ public class StudentController {
         return studentService.findById(id);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER', 'ROLE_HEADTEACHER') or " +
-            "principal.id == #user_id")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_TEACHER', 'ROLE_HEADTEACHER') or " +
+//            "principal.id == #user_id")
     @ApiOperation(value = "${StudentController.findByUserId}")
     @ApiResponses(value = {
             @ApiResponse(code = 400, message = "Something went wrong"),
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Student doesn't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @GetMapping(value = "/students/user/{user_id}")
-    public Student findByUserId(@PathVariable Long user_id) {
-        return studentService.findByUserId(user_id);
+    @GetMapping(value = "/students/user/{userId}")
+    public Student findByUserId(@PathVariable Long userId) {
+        return studentService.findByUserId(userId);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -87,7 +87,7 @@ public class StudentController {
         Student student = studentService.create(studentResponseDTO);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/api/user/{userId}").buildAndExpand(student.getId()).toUri());
-        return new ResponseEntity<Student>(student, HttpStatus.CREATED);
+        return new ResponseEntity<>(student, HttpStatus.CREATED);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or @securityService.hasStudentAccess(principal.id, #id)")

@@ -2,9 +2,9 @@ import { Teacher } from "./teacher";
 
 export class Classroom {
   id: number;
-  start_year: number;
-  end_year: number;
+  startYear: number;
+  endYear: number;
   year: number;
   letter: string;
-  head_teacher: Teacher;
+  headTeacher: Teacher;
 }

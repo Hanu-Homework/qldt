@@ -5,7 +5,13 @@
       <h2>Update</h2>
     </div>
     <div class="container">
-      <button mat-button mat-ripple (click)="userUpdate()" class="btn btn-dark">
+      <button
+        mat-button
+        mat-ripple
+        (click)="userUpdate()"
+        class="btn btn-dark"
+        style="margin-bottom: 20px"
+      >
         Account settings
       </button>
       <form (ngSubmit)="submit()" #form="ngForm" class="form">

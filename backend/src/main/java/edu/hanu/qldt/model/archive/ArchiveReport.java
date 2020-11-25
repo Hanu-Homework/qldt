@@ -10,7 +10,7 @@ import java.util.Objects;
  * This class represent an archived report. !ONLY THE END YEAR RESULT!
  */
 @Entity
-@Table(name = "archiveReports")
+@Table(name = "archive_reports")
 public class ArchiveReport {
 
     /**
@@ -24,11 +24,11 @@ public class ArchiveReport {
     /**
      * Course name.
      */
-    @Column(name = "courseName", nullable = false)
+    @Column(name = "course_name", nullable = false)
     private String courseName;
 
     /**
-     * Yeaar when course happens.
+     * Year when course happens.
      */
     @Column(name = "year", nullable = false)
     private int year;
@@ -47,13 +47,18 @@ public class ArchiveReport {
 
     /**
      * Constructor to make a new instance.
-     * 
-     * @param courseName Course name. 
-     * @param year Year when course happens.
-     * @param mark Final result at the end.
-     * @param archive Student object to collect reports.
+     *
+     * @param courseName Course name.
+     * @param year       Year when course happens.
+     * @param mark       Final result at the end.
+     * @param archive    Student object to collect reports.
      */
-    public ArchiveReport(String courseName, int year, int mark, Archive archive) {
+    public ArchiveReport(
+            String courseName,
+            int year,
+            int mark,
+            Archive archive
+    ) {
         this.courseName = courseName;
         this.year = year;
         this.mark = mark;
@@ -66,7 +71,7 @@ public class ArchiveReport {
     @JsonIgnore
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne
-    @JoinColumn(name="archive_id")
+    @JoinColumn(name = "archive_id")
     private Archive archive;
 
     public Long getId() {

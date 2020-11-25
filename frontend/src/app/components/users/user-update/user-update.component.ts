@@ -21,6 +21,7 @@ export class UserUpdateComponent implements OnInit {
   response = new UserResponseDTO();
   newPassword: string;
   reEnterPassword: string;
+  userSubmitted = false;
 
   constructor(
     private userService: UserService,
@@ -53,7 +54,7 @@ export class UserUpdateComponent implements OnInit {
 
   onSubmit() {
     if (this.isDataChanged && this.isUsernameUnique && this.isPasswordMatch) {
-      if (!this.response.fullName) this.response.fullName = this.user.full_name;
+      if (!this.response.fullName) this.response.fullName = this.user.fullName;
       if (!this.response.username) this.response.username = this.user.username;
       if (!this.newPassword) this.response.password = this.newPassword;
       this.userService.update(this.id, this.response).subscribe(() => {

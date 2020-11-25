@@ -51,7 +51,7 @@ public class Student {
      * Year when student started.
      */
     @Column(name = "start_year", nullable = false)
-    private int start_year;
+    private int startYear;
 
     /**
      * Student address.
@@ -75,13 +75,13 @@ public class Student {
      * Student father name.
      */
     @Column(name = "father_name", length = 32)
-    private String parent1Name;
+    private String fatherName;
 
     /**
      * Student mother name.
      */
     @Column(name = "mother_name", length = 32)
-    private String parent2Name;
+    private String motherName;
 
     /**
      * Student father phone number.
@@ -107,40 +107,40 @@ public class Student {
      *
      * @param student      User object to student.
      * @param dateOfBirth  Student Date of Birth.
-     * @param start_year   Year when student started.
+     * @param startYear   Year when student started.
      * @param address      Student address.
      * @param gender       Gender.
      * @param educationId  Student education id.
      * @param healthCareId Student healthcare id.
-     * @param parent1Name  Student "first" parent name.
-     * @param parent2Name  Student "second" parent name.
-     * @param fatherPhone Student "first" parent phone number.
-     * @param motherPhone Student "second" parent phone number.
+     * @param fatherName  Student "first" parent name.
+     * @param motherName  Student "second" parent name.
+     * @param fatherPhone  Student "first" parent phone number.
+     * @param motherPhone  Student "second" parent phone number.
      * @param classroom    Class where student learn.
      */
     public Student(
             User student,
             LocalDate dateOfBirth,
-            int start_year,
+            int startYear,
             String address,
             Gender gender,
             String educationId,
             String healthCareId,
-            String parent1Name,
-            String parent2Name,
+            String fatherName,
+            String motherName,
             String fatherPhone,
             String motherPhone,
             Classroom classroom
     ) {
         this.student = student;
         this.dateOfBirth = dateOfBirth;
-        this.start_year = start_year;
+        this.startYear = startYear;
         this.address = address;
         this.gender = gender;
         this.educationId = educationId;
         this.healthCareId = healthCareId;
-        this.parent1Name = parent1Name;
-        this.parent2Name = parent2Name;
+        this.fatherName = fatherName;
+        this.motherName = motherName;
         this.fatherPhone = fatherPhone;
         this.motherPhone = motherPhone;
         this.classroom = classroom;
@@ -153,8 +153,8 @@ public class Student {
     @ManyToMany
     @JoinTable(
             name = "student_course",
-            joinColumns = {@JoinColumn(name = "studentId")},
-            inverseJoinColumns = {@JoinColumn(name = "courseId"),
+            joinColumns = {@JoinColumn(name = "student_id")},
+            inverseJoinColumns = {@JoinColumn(name = "course_id"),
             }
     )
     private List<Course> courses = new ArrayList<>();
@@ -221,12 +221,12 @@ public class Student {
         this.gender = gender;
     }
 
-    public int getStart_year() {
-        return start_year;
+    public int getStartYear() {
+        return startYear;
     }
 
-    public void setStart_year(int start_year) {
-        this.start_year = start_year;
+    public void setStartYear(int start_year) {
+        this.startYear = start_year;
     }
 
     public String getAddress() {
@@ -253,20 +253,20 @@ public class Student {
         this.healthCareId = healthCareId;
     }
 
-    public String getParent1Name() {
-        return parent1Name;
+    public String getFatherName() {
+        return fatherName;
     }
 
-    public void setParent1Name(String parent1Name) {
-        this.parent1Name = parent1Name;
+    public void setFatherName(String parent1Name) {
+        this.fatherName = parent1Name;
     }
 
-    public String getParent2Name() {
-        return parent2Name;
+    public String getMotherName() {
+        return motherName;
     }
 
-    public void setParent2Name(String parent2Name) {
-        this.parent2Name = parent2Name;
+    public void setMotherName(String parent2Name) {
+        this.motherName = parent2Name;
     }
 
     public String getFatherPhone() {
@@ -323,5 +323,10 @@ public class Student {
 
     public void setClassroom(Classroom classroom) {
         this.classroom = classroom;
+    }
+
+    @Override
+    public String toString() {
+        return "Student<" + this.student.getFullName() + "," + this.student.getId() + ">";
     }
 }

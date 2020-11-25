@@ -24,7 +24,7 @@ export class StudentCreateComponent implements OnInit {
   classrooms: Observable<Classroom[]>;
   selectedOption: any = {};
   selectedOptionGender: any = {};
-  genders: string[] = ["Male", "Female", "Other"];
+  genders: string[] = ["MALE", "FEMALE", "OTHER"];
 
   constructor(
     private userService: UserService,
@@ -68,7 +68,7 @@ export class StudentCreateComponent implements OnInit {
   }
 
   onStudentSubmit() {
-    this.student.classroom_id = Number(this.selectedOption.id);
+    this.student.classroomId = Number(this.selectedOption.id);
     this.student.gender = this.selectedOptionGender;
     this.studentService.create(this.student).subscribe(
       () => {},

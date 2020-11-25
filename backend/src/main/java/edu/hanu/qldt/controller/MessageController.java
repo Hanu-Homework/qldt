@@ -42,8 +42,8 @@ public class MessageController {
         return messageService.findAll();
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TEACHER') or hasRole('ROLE_HEADTEACHER')" +
-            "or @securityService.hasStudentAccess(principal.id, #student_id)")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TEACHER') or hasRole('ROLE_HEADTEACHER')") // +
+//            "or @securityService.hasStudentAccess(principal.id, #student_id)")
     @ApiOperation(value = "${MessageController.findById}")
     @ApiResponses(value = {
             @ApiResponse(code = 400, message = "Something went wrong"),

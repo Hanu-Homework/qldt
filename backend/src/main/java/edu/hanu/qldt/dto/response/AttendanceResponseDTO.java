@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class AttendanceResponseDTO {
 
-    private Long student_id;
+    private Long studentId;
 
     private boolean miss;
 
@@ -15,19 +15,19 @@ public class AttendanceResponseDTO {
     public AttendanceResponseDTO() {
     }
 
-    public AttendanceResponseDTO(Long student_id, boolean miss, int lesson, LocalDate dateOfMiss) {
-        this.student_id = student_id;
+    public AttendanceResponseDTO(Long studentId, boolean miss, int lesson, LocalDate dateOfMiss) {
+        this.studentId = studentId;
         this.miss = miss;
         this.lesson = lesson;
         this.dateOfMiss = dateOfMiss;
     }
 
-    public Long getStudent_id() {
-        return student_id;
+    public Long getStudentId() {
+        return studentId;
     }
 
-    public void setStudent_id(Long student_id) {
-        this.student_id = student_id;
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 
     public boolean isMiss() {

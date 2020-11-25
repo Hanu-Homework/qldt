@@ -1,15 +1,14 @@
 export class StudentResponseDTO {
-    
-    username: string;
-    dateOfBirth: string;
-    start_year: number;
-    address: string;
-    gender: string;
-    educationId: string;
-    healthCareId: string;
-    parent1Name: string;
-    parent2Name: string;
-    parent1Phone: string;
-    parent2Phone: string;
-    classroom_id: number;
+  username: string;
+  dateOfBirth: string;
+  startYear: number;
+  address: string;
+  gender: string;
+  educationId: string;
+  healthCareId: string;
+  fatherName: string;
+  motherName: string;
+  fatherPhone: string;
+  motherPhone: string;
+  classroomId: number;
 }

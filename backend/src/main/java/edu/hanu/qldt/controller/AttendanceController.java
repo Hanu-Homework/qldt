@@ -33,16 +33,17 @@ public class AttendanceController {
     }
 
     @PreAuthorize("hasRole('ROLE_TEACHER') or hasRole('ROLE_HEADTEACHER') or" +
-            "@securityService.hasStudentAccess(principal.id, #student_id)")
+            "@securityService.hasStudentAccess(principal.id, #studentId)")
     @ApiOperation(value = "${AttendanceController.getAllByStudent}")
     @ApiResponses(value = {
             @ApiResponse(code = 400, message = "Something went wrong"),
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Attendances don't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @GetMapping(value = "/attendances/all/{student_id}")
-    public List<Attendance> getAllByStudent(@PathVariable Long student_id) {
-        return attendanceService.getAllByStudent(student_id);
+    @GetMapping(value = "/attendances/all/{studentId}")
+    public List<Attendance> getAllByStudent(@PathVariable Long studentId) {
+        System.out.println("Invoked");
+        return attendanceService.getAllByStudent(studentId);
     }
 
     @PreAuthorize("hasRole('ROLE_TEACHER') or hasRole('ROLE_HEADTEACHER')")
@@ -90,9 +91,9 @@ public class AttendanceController {
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Classroom doesn't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @GetMapping(value = "/attendances/classroom/{classroom_id}")
-    public List<Attendance> getAllAttendancesByClassroom(@PathVariable Long classroom_id) {
-        return  attendanceService.getAllAttendancesByClassroom(classroom_id);
+    @GetMapping(value = "/attendances/classroom/{classroomId}")
+    public List<Attendance> getAllAttendancesByClassroom(@PathVariable Long classroomId) {
+        return  attendanceService.getAllAttendancesByClassroom(classroomId);
     }
 
     @PreAuthorize("hasRole('ROLE_TEACHER') or hasRole('ROLE_HEADTEACHER')")
@@ -102,8 +103,8 @@ public class AttendanceController {
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Classroom doesn't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @GetMapping(value = "/attendances/{classroom_id}")
-        public List<AttendanceDTO> makeAttendanceFormToClassroom(@PathVariable Long classroom_id) {
-        return attendanceService.makeAttendanceFormToClassroom(classroom_id);
+    @GetMapping(value = "/attendances/{classroomId}")
+        public List<AttendanceDTO> makeAttendanceFormToClassroom(@PathVariable Long classroomId) {
+        return attendanceService.makeAttendanceFormToClassroom(classroomId);
     }
 }

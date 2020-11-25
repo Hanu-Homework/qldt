@@ -85,13 +85,15 @@ public class StudentServiceImp implements StudentService {
      */
     @Override
     public Student findByUserId(Long user_id) {
-        return studentRepository
+        Student result =  studentRepository
                 .findAll()
                 .stream()
                 .filter(student -> student.getStudent()
                         .getId().equals(user_id))
                 .findAny()
                 .orElse(null);
+        System.out.println(result);
+        return result;
     }
 
     /**
@@ -104,7 +106,7 @@ public class StudentServiceImp implements StudentService {
     @Override
     public Student create(StudentResponseDTO studentResponseDTO) {
         User user = userRepository.findByUsername(studentResponseDTO.getUsername());
-        Classroom classroom = classroomRepository.getOne(studentResponseDTO.getClassroom_id());
+        Classroom classroom = classroomRepository.getOne(studentResponseDTO.getClassroomId());
         Student student = new Student();
 
         student.setAddress(studentResponseDTO.getAddress());
@@ -113,11 +115,11 @@ public class StudentServiceImp implements StudentService {
         student.setGender(Gender.valueOf(studentResponseDTO.getGender()));
         student.setEducationId(studentResponseDTO.getEducationId());
         student.setHealthCareId(studentResponseDTO.getHealthCareId());
-        student.setStart_year(studentResponseDTO.getStart_year());
-        student.setParent1Name(studentResponseDTO.getParent1Name());
-        student.setParent2Name(studentResponseDTO.getParent2Name());
-        student.setFatherPhone(studentResponseDTO.getParent1Phone());
-        student.setMotherPhone(studentResponseDTO.getParent2Phone());
+        student.setStartYear(studentResponseDTO.getStartYear());
+        student.setFatherName(studentResponseDTO.getFatherName());
+        student.setMotherName(studentResponseDTO.getMotherName());
+        student.setFatherPhone(studentResponseDTO.getFatherPhone());
+        student.setMotherPhone(studentResponseDTO.getMotherPhone());
         student.setStudent(user);
         studentRepository.save(student);
         return student;
@@ -133,7 +135,7 @@ public class StudentServiceImp implements StudentService {
      */
     @Override
     public Student update(Long id, StudentResponseDTO studentResponseDTO) {
-        Classroom classroom = classroomRepository.getOne(studentResponseDTO.getClassroom_id());
+        Classroom classroom = classroomRepository.getOne(studentResponseDTO.getClassroomId());
         Student student = studentRepository.getOne(id);
 
         student.setAddress(studentResponseDTO.getAddress());
@@ -142,11 +144,11 @@ public class StudentServiceImp implements StudentService {
         student.setGender(Gender.valueOf(studentResponseDTO.getGender()));
         student.setEducationId(studentResponseDTO.getEducationId());
         student.setHealthCareId(studentResponseDTO.getHealthCareId());
-        student.setStart_year(studentResponseDTO.getStart_year());
-        student.setParent1Name(studentResponseDTO.getParent1Name());
-        student.setParent2Name(studentResponseDTO.getParent2Name());
-        student.setFatherPhone(studentResponseDTO.getParent1Phone());
-        student.setMotherPhone(studentResponseDTO.getParent2Phone());
+        student.setStartYear(studentResponseDTO.getStartYear());
+        student.setFatherName(studentResponseDTO.getFatherName());
+        student.setMotherName(studentResponseDTO.getMotherName());
+        student.setFatherPhone(studentResponseDTO.getFatherPhone());
+        student.setMotherPhone(studentResponseDTO.getMotherPhone());
 
         return studentRepository.save(student);
     }

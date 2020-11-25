@@ -6,15 +6,15 @@ public class CourseResponseDTO {
 
     private int year;
 
-    private Long teacher_id;
+    private Long teacherId;
 
     public CourseResponseDTO() {
     }
 
-    public CourseResponseDTO(String title, int year, Long teacher_id) {
+    public CourseResponseDTO(String title, int year, Long teacherId) {
         this.title = title;
         this.year = year;
-        this.teacher_id = teacher_id;
+        this.teacherId = teacherId;
     }
 
     public String getTitle() {
@@ -33,11 +33,11 @@ public class CourseResponseDTO {
         this.year = year;
     }
 
-    public Long getTeacher_id() {
-        return teacher_id;
+    public Long getTeacherId() {
+        return teacherId;
     }
 
-    public void setTeacher_id(Long teacher_id) {
-        this.teacher_id = teacher_id;
+    public void setTeacherId(Long teacherId) {
+        this.teacherId = teacherId;
     }
 }

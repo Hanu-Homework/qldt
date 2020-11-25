@@ -66,9 +66,9 @@ export class TimetableEntityCreateComponent implements OnInit {
   }
 
   onSubmit() {
-    this.timeTableEntity.course_id = this.id;
-    this.timeTableEntity.classroom_id = Number(this.selectedOptionClassroom.id);
-    this.timeTableEntity.room_id = Number(this.selectedOptionRoom.id);
+    this.timeTableEntity.courseId = this.id;
+    this.timeTableEntity.classroomId = Number(this.selectedOptionClassroom.id);
+    this.timeTableEntity.roomId = Number(this.selectedOptionRoom.id);
     this.timeTableService.create(this.id, this.timeTableEntity).subscribe(
       () => {
         this.reset();

@@ -49,20 +49,20 @@ export class UpdateExamComponent implements OnInit {
   }
 
   isDataChanged() {
-    if (!this.response.mark || !this.response.written_at || !this.etype)
+    if (!this.response.mark || !this.response.writtenAt || !this.etype)
       return true;
     return false;
   }
 
   onSubmit() {
     if (this.isDataChanged) {
-      this.response.course_id = this.exam.course.id;
-      this.response.student_id = this.exam.student.id;
+      this.response.courseId = this.exam.course.id;
+      this.response.studentId = this.exam.student.id;
       if (!this.etype) this.response.examType = this.etype;
-      else this.response.examType = this.exam.exam_type;
+      else this.response.examType = this.exam.examType;
       if (!this.response.mark) this.response.mark = this.exam.mark;
-      if (!this.response.written_at)
-        this.response.written_at = this.exam.written_at;
+      if (!this.response.writtenAt)
+        this.response.writtenAt = this.exam.writtenAt;
       this.examService.update(this.exam_id, this.response).subscribe(
         () => {
           this.refresh();

@@ -10,10 +10,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class SecurityService {
 
+    private final StudentRepository studentRepository;
+
+    private final TeacherRepository teacherRepository;
+
     @Autowired
-    private StudentRepository studentRepository;
-    @Autowired
-    private TeacherRepository teacherRepository;
+    public SecurityService(StudentRepository studentRepository, TeacherRepository teacherRepository) {
+        this.studentRepository = studentRepository;
+        this.teacherRepository = teacherRepository;
+    }
 
     public boolean hasStudentAccess(Long currentUser_id, Long student_id) {
         Student student = studentRepository.getOne(student_id);

@@ -65,7 +65,7 @@ public class RemarkServiceImpl implements RemarkService {
     @Override
     public Remark create(RemarkResponseDTO remarkResponseDTO) {
         /* Finds student by id. */
-        Student student = studentRepository.getOne(remarkResponseDTO.getStudent_id());
+        Student student = studentRepository.getOne(remarkResponseDTO.getStudentId());
         return remarkRepository.save(new Remark(
                 remarkResponseDTO.getText(),
                 student));

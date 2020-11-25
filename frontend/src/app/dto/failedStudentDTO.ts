@@ -1,8 +1,7 @@
-import { Student } from '../model/student';
-import { Course } from '../model/course';
+import { Student } from "../model/student";
+import { Course } from "../model/course";
 
 export class FailedStudentDTO {
-
-    student: Student;
-    courses: Course[];
+  student: Student;
+  courses: Course[];
 }

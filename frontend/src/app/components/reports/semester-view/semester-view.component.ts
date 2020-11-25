@@ -18,7 +18,7 @@ import { isTeacher, isIdMatches } from "src/app/shared/roles";
   styleUrls: ["./semester-view.component.scss"],
 })
 export class SemesterViewComponent implements OnInit {
-  student_id: number;
+  studentId: number;
   currentUser: any = {};
   year: number;
   semester: any = {};
@@ -40,7 +40,7 @@ export class SemesterViewComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.student_id = this.route.snapshot.params["id"];
+    this.studentId = this.route.snapshot.params["id"];
     this.userService
       .getMyInfo()
       .toPromise()
@@ -58,7 +58,7 @@ export class SemesterViewComponent implements OnInit {
   onSubmit() {
     this.reportService
       .getSemesterResultByStudent(
-        this.student_id,
+        this.studentId,
         this.year,
         Number(this.semester)
       )
@@ -69,7 +69,7 @@ export class SemesterViewComponent implements OnInit {
   }
 
   goBack() {
-    this.studentService.findById(this.student_id).subscribe((data) => {
+    this.studentService.findById(this.studentId).subscribe((data) => {
       this.router.navigate(["student/classroom/", data.classroom.id]);
     });
   }
@@ -77,25 +77,21 @@ export class SemesterViewComponent implements OnInit {
   userRole() {
     if (
       isTeacher(this.currentUser, this.router) ||
-      isIdMatches(
-        this.currentUser,
-        this.router,
-        this.student_id,
-        this.studentService
-      )
+      isIdMatches(this.currentUser, this.student)
     ) {
       return true;
     } else {
       this.router.navigate(["403"]);
+      return false;
     }
   }
 
-  update(report_id: number) {
-    this.router.navigate(["report/update", report_id]);
+  update(reportId: number) {
+    this.router.navigate(["report/update", reportId]);
   }
 
-  delete(report_id: number) {
-    this.reportService.delete(report_id).subscribe(() => {
+  delete(reportId: number) {
+    this.reportService.delete(reportId).subscribe(() => {
       this.refresh();
     });
   }

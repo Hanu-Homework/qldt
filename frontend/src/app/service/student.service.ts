@@ -17,9 +17,9 @@ export class StudentService {
     return this.apiService.get(this.configService.getStudentUrl + "/" + id);
   }
 
-  findByUserId(user_id: number) {
+  findByUserId(userId: number) {
     return this.apiService.get(
-      this.configService.getStudentByUserIdUrl + "/" + user_id
+      this.configService.getStudentByUserIdUrl + "/" + userId
     );
   }
 

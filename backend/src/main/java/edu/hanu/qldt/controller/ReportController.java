@@ -33,17 +33,17 @@ public class ReportController {
     }
 
     @PreAuthorize("hasRole('ROLE_TEACHER') or hasRole('ROLE_HEADTEACHER')" +
-            "or @securityService.hasStudentAccess(principal.id, #student_id)")
+            "or @securityService.hasStudentAccess(principal.id, #studentId)")
     @ApiOperation(value = "${ReportController.getSemesterResultByStudent}")
     @ApiResponses(value = {
             @ApiResponse(code = 400, message = "Something went wrong"),
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Semester doesn't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @PostMapping(value = "/reports/{student_id}/{year}")
-    public List<Report> getSemesterResultByStudent(@PathVariable Long student_id,
+    @PostMapping(value = "/reports/{studentId}/{year}")
+    public List<Report> getSemesterResultByStudent(@PathVariable Long studentId,
                                                    @PathVariable int year, @RequestBody int semester) {
-        return reportService.getSemesterResultByStudent(student_id, year, semester);
+        return reportService.getSemesterResultByStudent(studentId, year, semester);
     }
 
     @PreAuthorize("hasRole('ROLE_TEACHER') or hasRole('ROLE_HEADTEACHER')")
@@ -103,9 +103,9 @@ public class ReportController {
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Report form cannot created"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @GetMapping(value = "/reports/form/{classroom_id}")
-    public List<ReportDTO> makeReportFormToClassroom(@PathVariable Long classroom_id){
-        return reportService.makeReportFormToClassroom(classroom_id);
+    @GetMapping(value = "/reports/form/{classroomId}")
+    public List<ReportDTO> makeReportFormToClassroom(@PathVariable Long classroomId){
+        return reportService.makeReportFormToClassroom(classroomId);
     }
 
     @PreAuthorize("hasRole('ROLE_TEACHER') or hasRole('ROLE_HEADTEACHER')")

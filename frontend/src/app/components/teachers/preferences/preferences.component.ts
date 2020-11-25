@@ -42,10 +42,10 @@ export class PreferencesComponent implements OnInit {
               .getAllTeacherPreferences(this.teacher.id)
               .subscribe((data) => {
                 this.preferencesOrigin = data;
-                this.preferences.homeworkWeight = this.preferencesOrigin.homework_weight;
-                this.preferences.repetitionWeight = this.preferencesOrigin.repetition_weight;
-                this.preferences.testWeight = this.preferencesOrigin.test_teight;
-                this.preferences.topicTestWeight = this.preferencesOrigin.topic_test_weight;
+                this.preferences.homeworkWeight = this.preferencesOrigin.homeworkWeight;
+                this.preferences.repetitionWeight = this.preferencesOrigin.repetitionWeight;
+                this.preferences.testWeight = this.preferencesOrigin.testWeight;
+                this.preferences.topicTestWeight = this.preferencesOrigin.topicTestWeight;
                 this.isDataAvailable = true;
               });
           });
@@ -61,17 +61,16 @@ export class PreferencesComponent implements OnInit {
   isDataChanged() {
     if (
       !(
-        this.preferences.homeworkWeight ==
-        this.preferencesOrigin.homework_weight
+        this.preferences.homeworkWeight == this.preferencesOrigin.homeworkWeight
       ) ||
       !(
         this.preferences.topicTestWeight ==
-        this.preferencesOrigin.topic_test_weight
+        this.preferencesOrigin.topicTestWeight
       ) ||
-      !(this.preferences.testWeight == this.preferencesOrigin.test_teight) ||
+      !(this.preferences.testWeight == this.preferencesOrigin.testWeight) ||
       !(
         this.preferences.repetitionWeight ==
-        this.preferencesOrigin.repetition_weight
+        this.preferencesOrigin.repetitionWeight
       )
     )
       return true;
@@ -80,7 +79,7 @@ export class PreferencesComponent implements OnInit {
 
   onSubmit() {
     if (this.isDataChanged) {
-      this.preferences.teacher_id = this.teacher.id;
+      this.preferences.teacherId = this.teacher.id;
       this.teacherService
         .setTeacherPreferences(this.preferences)
         .subscribe(() => {

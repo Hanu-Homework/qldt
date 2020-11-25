@@ -1,7 +1,7 @@
 export class ExamResponseDTO {
   mark: number;
-  written_at: string;
+  writtenAt: string;
   examType: string;
-  course_id: number;
-  student_id: number;
+  courseId: number;
+  studentId: number;
 }

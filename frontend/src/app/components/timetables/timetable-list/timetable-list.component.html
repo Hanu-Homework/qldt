@@ -3,8 +3,16 @@
   <div class="container" *ngIf="userRole()">
     <div class="container">
       <div class="container">
-        <h3>TimeTable Entity for {{ course.courseName }}</h3>
-        <button (click)="create(course.id)" class="btn btn-primary">New</button>
+        <h3 style="margin-top: 20px; margin-bottom: 20px">
+          TimeTable Entity for {{ course.title }}
+        </h3>
+        <button
+          (click)="create(course.id)"
+          class="btn btn-primary"
+          style="margin-bottom: 20px"
+        >
+          New
+        </button>
       </div>
       <div class="container">
         <input

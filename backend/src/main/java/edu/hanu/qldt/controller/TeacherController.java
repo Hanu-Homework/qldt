@@ -62,9 +62,9 @@ public class TeacherController {
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Teacher doesn't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @GetMapping(value = "/teachers/user/{user_id}")
-    public Teacher findByUserId(@PathVariable Long user_id) {
-        return teacherService.findByUserId(user_id);
+    @GetMapping(value = "/teachers/user/{userId}")
+    public Teacher findByUserId(@PathVariable Long userId) {
+        return teacherService.findByUserId(userId);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -99,11 +99,11 @@ public class TeacherController {
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Teacher or Course doesn't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @PutMapping(value = "/teachers/setCourse/{teacher_id}")
-    public String setCourse(@PathVariable Long teacher_id,
-                            @RequestBody Long course_id) {
-        teacherService.setCourse(teacher_id, course_id);
-        return course_id.toString();
+    @PutMapping(value = "/teachers/setCourse/{teacherId}")
+    public String setCourse(@PathVariable Long teacherId,
+                            @RequestBody Long courseId) {
+        teacherService.setCourse(teacherId, courseId);
+        return courseId.toString();
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -129,7 +129,7 @@ public class TeacherController {
     @PutMapping(value = "/teachers/preferences")
     public String setTeacherPreferences(@RequestBody TeacherPreferenceResponseDTO teacherPreferenceResponseDTO) {
         teacherService.setTeacherPreferences(teacherPreferenceResponseDTO);
-        return teacherPreferenceResponseDTO.getTeacher_id().toString();
+        return teacherPreferenceResponseDTO.getTeacherId().toString();
     }
 
     @ApiOperation(value = "${TeacherController.getAllTeacherPreferences}")
@@ -138,8 +138,8 @@ public class TeacherController {
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Preferences don't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @GetMapping(value = "/teachers/preferences/{teacher_id}")
-    public TeacherPreference getAllTeacherPreferences(@PathVariable Long teacher_id) {
-        return teacherService.getAllTeacherPreferences(teacher_id);
+    @GetMapping(value = "/teachers/preferences/{teacherId}")
+    public TeacherPreference getAllTeacherPreferences(@PathVariable Long teacherId) {
+        return teacherService.getAllTeacherPreferences(teacherId);
     }
 }

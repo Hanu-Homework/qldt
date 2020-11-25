@@ -12,8 +12,8 @@ import { isAdmin } from "src/app/shared/roles";
   styleUrls: ["./archive-details.component.scss"],
 })
 export class ArchiveDetailsComponent implements OnInit {
-  archive_id: number;
-  archive: Observable<Archive>;
+  archiveId: number;
+  archive: Archive;
   isDataAvailable: boolean = false;
   currentUser: any = {};
 
@@ -25,13 +25,14 @@ export class ArchiveDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.archive_id = this.route.snapshot.params["id"];
+    this.archiveId = this.route.snapshot.params["id"];
     this.userService
       .getMyInfo()
       .toPromise()
       .then((data) => {
         this.currentUser = data;
-        this.adminService.getArchiveById(this.archive_id).subscribe((data) => {
+        this.adminService.getArchiveById(this.archiveId).subscribe((data) => {
+          console.log(data);
           this.archive = data;
           this.isDataAvailable = true;
         });

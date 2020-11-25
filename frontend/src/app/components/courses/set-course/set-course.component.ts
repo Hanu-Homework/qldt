@@ -13,7 +13,7 @@ import { isAdmin } from "src/app/shared/roles";
   styleUrls: ["./set-course.component.scss"],
 })
 export class SetCourseComponent implements OnInit {
-  student_id: number;
+  studentId: number;
   currentUser: any = {};
   selectedOption: any = {};
   isDataAvailable: boolean = false;
@@ -29,7 +29,7 @@ export class SetCourseComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.student_id = this.route.snapshot.params["id"];
+    this.studentId = this.route.snapshot.params["id"];
     this.userService
       .getMyInfo()
       .toPromise()
@@ -51,7 +51,7 @@ export class SetCourseComponent implements OnInit {
   onSubmit() {
     if (this.unset == false) {
       this.courseService
-        .setCourse(this.student_id, this.selectedOption.id)
+        .setCourse(this.studentId, this.selectedOption.id)
         .subscribe(
           () => {
             this.refresh();
@@ -63,7 +63,7 @@ export class SetCourseComponent implements OnInit {
         );
     } else {
       this.courseService
-        .unsetCourse(this.student_id, this.selectedOption.id)
+        .unsetCourse(this.studentId, this.selectedOption.id)
         .subscribe(
           () => {
             this.refresh();

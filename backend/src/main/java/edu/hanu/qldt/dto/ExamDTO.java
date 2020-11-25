@@ -10,17 +10,17 @@ public class ExamDTO {
 
     private int mark;
 
-    private LocalDate written_at;
+    private LocalDate writtenAt;
 
     private String examType;
 
     public ExamDTO() {
     }
 
-    public ExamDTO(Student student, LocalDate written_at, String examType) {
+    public ExamDTO(Student student, LocalDate writtenAt, String examType) {
         this.student = student;
         this.mark = 0;
-        this.written_at = written_at;
+        this.writtenAt = writtenAt;
     }
 
     public Student getStudent() {
@@ -39,12 +39,12 @@ public class ExamDTO {
         this.mark = mark;
     }
 
-    public LocalDate getWritten_at() {
-        return written_at;
+    public LocalDate getWrittenAt() {
+        return writtenAt;
     }
 
-    public void setWritten_at(LocalDate written_at) {
-        this.written_at = written_at;
+    public void setWrittenAt(LocalDate writtenAt) {
+        this.writtenAt = writtenAt;
     }
 
     public String getExamType() {

@@ -24,6 +24,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
     TokenHelper tokenHelper;
+
     @Autowired
     UserDetailsService userDetailsService;
 
@@ -33,7 +34,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
     public static final String LOGIN_MATCHER = "/auth/login";
     public static final String LOGOUT_MATCHER = "/auth/logout";
 
-    private List<String> pathsToSkip = Arrays.asList(
+    private final List<String> pathsToSkip = Arrays.asList(
             ROOT_MATCHER,
             HTML_MATCHER,
             CSS_MATCHER,

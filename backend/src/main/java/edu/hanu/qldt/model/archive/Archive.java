@@ -28,7 +28,7 @@ public class Archive {
     /**
      * Student full name.
      */
-    @Column(name = "studentName", nullable = false)
+    @Column(name = "student_name", nullable = false)
     private String studentName;
 
     /**

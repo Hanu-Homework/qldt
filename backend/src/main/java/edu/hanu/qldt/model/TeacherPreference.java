@@ -28,21 +28,25 @@ public class TeacherPreference {
     /**
      * Weight of the test.
      */
+    @Column(name = "test_weight")
     private double testWeight;
 
     /**
      * Weight of the topic test.
      */
+    @Column(name = "topic_test_weight")
     private double topicTestWeight;
 
     /**
      * Weight of the repetition.
      */
+    @Column(name = "repetition_weight")
     private double repetitionWeight;
 
     /**
      * Weight of the homework.
      */
+    @Column(name = "homework_weight")
     private double homeworkWeight;
 
     /**
@@ -60,7 +64,13 @@ public class TeacherPreference {
      * @param repetitionWeight Weight of the repetition.
      * @param homeworkWeight Weight of the homework.
      */
-    public TeacherPreference(Teacher teacher, double testWeight, double topicTestWeight, double repetitionWeight, double homeworkWeight) {
+    public TeacherPreference(
+            Teacher teacher,
+            double testWeight,
+            double topicTestWeight,
+            double repetitionWeight,
+            double homeworkWeight
+    ) {
         this.teacher = teacher;
         this.testWeight = testWeight;
         this.topicTestWeight = topicTestWeight;

@@ -1,5 +1,6 @@
 package edu.hanu.qldt.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.hanu.qldt.model.user.group.Student;
 
 import javax.persistence.*;

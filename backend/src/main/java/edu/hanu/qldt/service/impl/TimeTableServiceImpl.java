@@ -123,11 +123,11 @@ public class TimeTableServiceImpl implements TimeTableService {
     @Override
     public TimeTableEntity create(TimeTableEntityResponseDTO timeTableEntityResponseDTO) {
         /* Finds classroom by id. */
-        Classroom classroom = classroomRepository.getOne(timeTableEntityResponseDTO.getClassroom_id());
+        Classroom classroom = classroomRepository.getOne(timeTableEntityResponseDTO.getClassroomId());
         /* Finds course by id. */
-        Course course = courseRepository.getOne(timeTableEntityResponseDTO.getCourse_id());
+        Course course = courseRepository.getOne(timeTableEntityResponseDTO.getCourseId());
         /* Finds room by id. */
-        Room room = roomRepository.getOne(timeTableEntityResponseDTO.getRoom_id());
+        Room room = roomRepository.getOne(timeTableEntityResponseDTO.getRoomId());
 
         return timeTableRepository.save(new TimeTableEntity(
                 timeTableEntityResponseDTO.getDay(),
@@ -151,9 +151,9 @@ public class TimeTableServiceImpl implements TimeTableService {
         /* Finds timeTableEntity by id. */
         TimeTableEntity tableEntity = timeTableRepository.getOne(id);
         /* Finds classroom by id. */
-        Classroom classroom = classroomRepository.getOne(timeTableEntityResponseDTO.getClassroom_id());
+        Classroom classroom = classroomRepository.getOne(timeTableEntityResponseDTO.getClassroomId());
         /* Finds room by id. */
-        Room room = roomRepository.getOne(timeTableEntityResponseDTO.getRoom_id());
+        Room room = roomRepository.getOne(timeTableEntityResponseDTO.getRoomId());
 
         tableEntity.setRoom(room);
         tableEntity.setDay(timeTableEntityResponseDTO.getDay());

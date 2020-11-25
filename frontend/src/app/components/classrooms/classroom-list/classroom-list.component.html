@@ -5,13 +5,13 @@
       <div class="container">
         <h3>Classes</h3>
         <button
-          *ngIf="userRole() === 'ROLE_ADMIN'"
+          *ngIf="userRole()"
           mat-button
           mat-ripple
           (click)="createClassroom()"
           class="btn btn-info"
         >
-          Create Classroom
+          Create New Classroom
         </button>
       </div>
       <div class="container">
@@ -36,8 +36,8 @@
           <tbody>
             <tr *ngFor="let classroom of classrooms | filter: searchText">
               <td>{{ classroom.year }}{{ classroom.letter }}</td>
-              <td>{{ classroom.start_year }}</td>
-              <td>{{ classroom.end_year }}</td>
+              <td>{{ classroom.startYear }}</td>
+              <td>{{ classroom.endYear }}</td>
               <td>{{ classroom.headTeacher.teacher.fullName }}</td>
               <td>
                 <button

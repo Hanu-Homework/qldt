@@ -2,13 +2,13 @@
   <app-panel-loader></app-panel-loader>
   <div class="container" *ngIf="userRole()">
     <div class="container">
-      <h3>Info</h3>
+      <h3 style="margin-top: 30px">Info</h3>
       <button
         *ngIf="this.currentUser.authorities[0].authority + '' != 'ROLE_STUDENT'"
         (click)="create()"
         class="btn btn-dark"
       >
-        Create Message
+        Create New Remark
       </button>
     </div>
     <div class="container">

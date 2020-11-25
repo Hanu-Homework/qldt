@@ -1,25 +1,25 @@
+import { Teacher } from "./../../../model/teacher";
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Student } from "src/app/model/student";
 import { UserService } from "src/app/service/user.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { StudentService } from "src/app/service/student.service";
-import { isTeacher, isAdmin, isIdMatches } from "src/app/shared/roles";
+import { isTeacher, isAdmin } from "src/app/shared/roles";
+import { TeacherService } from "src/app/service/teacher.service";
 
 @Component({
   selector: "app-student-details",
-  templateUrl: "./student-details.component.html",
-  styleUrls: ["./student-details.component.scss"],
+  templateUrl: "./teacher-details.component.html",
+  styleUrls: ["./teacher-details.component.scss"],
 })
-export class StudentDetailsComponent implements OnInit {
+export class TeacherDetailsComponent implements OnInit {
   currentUser: any = {};
   id: number = 0;
-  student = new Student();
+  teacher = new Teacher();
   isDataAvailable: boolean = false;
 
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
-    private studentService: StudentService,
+    private teacherService: TeacherService,
     private router: Router
   ) {}
 
@@ -30,8 +30,8 @@ export class StudentDetailsComponent implements OnInit {
       .toPromise()
       .then((data) => {
         this.currentUser = data;
-        this.studentService.findById(this.id).subscribe((data) => {
-          this.student = data;
+        this.teacherService.findById(this.id).subscribe((data) => {
+          this.teacher = data;
           this.isDataAvailable = true;
         });
       });
@@ -40,13 +40,11 @@ export class StudentDetailsComponent implements OnInit {
   userRole(): boolean {
     if (
       isAdmin(this.currentUser, this.router) ||
-      isTeacher(this.currentUser, this.router) ||
-      isIdMatches(this.currentUser, this.student)
+      isTeacher(this.currentUser, this.router)
     ) {
       return true;
     } else {
       this.router.navigate(["403"]);
-      return false;
     }
   }
 }

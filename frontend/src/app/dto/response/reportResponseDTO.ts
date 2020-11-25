@@ -1,8 +1,7 @@
 export class ReportResponseDTO {
-
-    year: number;
-    semester: number;
-    mark: number;
-    course_id: number;
-    student_id: number;
+  year: number;
+  semester: number;
+  mark: number;
+  courseId: number;
+  studentId: number;
 }

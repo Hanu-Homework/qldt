@@ -41,9 +41,11 @@ export class AdministrationComponent implements OnInit {
   create() {
     this.adminService.createArchive().subscribe(
       (data) => {
+        console.log(data);
         this.openSnackBar("Archive created.", "Ok");
       },
       (error) => {
+        console.log(error);
         this.openSnackBar("Failed.", "Ok");
       }
     );
@@ -52,6 +54,7 @@ export class AdministrationComponent implements OnInit {
   newYear() {
     this.adminService.newYear().subscribe(
       (data) => {
+        console.log(data);
         this.openSnackBar("New Year Started!", "Ok");
       },
       (error) => {

@@ -76,9 +76,9 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public Report create(ReportResponseDTO reportResponseDTO) {
         /* Finds student by id. */
-        Student student = studentRepository.getOne(reportResponseDTO.getStudent_id());
+        Student student = studentRepository.getOne(reportResponseDTO.getStudentId());
         /* Finds course by id. */
-        Course course = courseRepository.getOne(reportResponseDTO.getCourse_id());
+        Course course = courseRepository.getOne(reportResponseDTO.getCourseId());
         return reportRepository.save(new Report(
                 student,
                 reportResponseDTO.getYear(),
@@ -101,7 +101,7 @@ public class ReportServiceImpl implements ReportService {
         /* Finds report by id. */
         Report report = reportRepository.getOne(id);
         /* Finds course by id. */
-        Course course = courseRepository.getOne(reportResponseDTO.getCourse_id());
+        Course course = courseRepository.getOne(reportResponseDTO.getCourseId());
         report.setMark(reportResponseDTO.getMark());
         report.setSemester(reportResponseDTO.getSemester());
         report.setYear(reportResponseDTO.getYear());
@@ -149,9 +149,9 @@ public class ReportServiceImpl implements ReportService {
         List<Report> reports = new ArrayList<>();
         for(ReportResponseDTO reportResponseDTO : reportResponseDTOS) {
             /* Finds student by id. */
-            Student student = studentRepository.getOne(reportResponseDTO.getStudent_id());
+            Student student = studentRepository.getOne(reportResponseDTO.getStudentId());
             /* Finds course by id. */
-            Course course = courseRepository.getOne(reportResponseDTO.getCourse_id());
+            Course course = courseRepository.getOne(reportResponseDTO.getCourseId());
             Report report = new Report(
                     student,
                     reportResponseDTO.getYear(),

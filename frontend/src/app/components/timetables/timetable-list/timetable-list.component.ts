@@ -15,6 +15,7 @@ import { isAdmin } from "src/app/shared/roles";
   styleUrls: ["./timetable-list.component.scss"],
 })
 export class TimetableListComponent implements OnInit {
+  searchText: any;
   course_id: number;
   currentUser: any = {};
   course = new Course();

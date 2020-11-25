@@ -6,21 +6,22 @@ public class TimeTableEntityResponseDTO {
 
     private int lessonNumber;
 
-    private Long room_id;
+    private Long roomId;
 
-    private Long course_id;
+    private Long courseId;
 
-    private Long classroom_id;
+    private Long classroomId;
 
     public TimeTableEntityResponseDTO() {
+
     }
 
-    public TimeTableEntityResponseDTO(int day, int lessonNumber, Long room_id, Long course_id, Long classroom_id) {
+    public TimeTableEntityResponseDTO(int day, int lessonNumber, Long roomId, Long courseId, Long classroomId) {
         this.day = day;
         this.lessonNumber = lessonNumber;
-        this.room_id = room_id;
-        this.course_id = course_id;
-        this.classroom_id = classroom_id;
+        this.roomId = roomId;
+        this.courseId = courseId;
+        this.classroomId = classroomId;
     }
 
     public int getDay() {
@@ -39,27 +40,27 @@ public class TimeTableEntityResponseDTO {
         this.lessonNumber = lessonNumber;
     }
 
-    public Long getRoom_id() {
-        return room_id;
+    public Long getRoomId() {
+        return roomId;
     }
 
-    public void setRoom_id(Long room_id) {
-        this.room_id = room_id;
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
     }
 
-    public Long getCourse_id() {
-        return course_id;
+    public Long getCourseId() {
+        return courseId;
     }
 
-    public void setCourse_id(Long course_id) {
-        this.course_id = course_id;
+    public void setCourseId(Long courseId) {
+        this.courseId = courseId;
     }
 
-    public Long getClassroom_id() {
-        return classroom_id;
+    public Long getClassroomId() {
+        return classroomId;
     }
 
-    public void setClassroom_id(Long classroom_id) {
-        this.classroom_id = classroom_id;
+    public void setClassroomId(Long classroomId) {
+        this.classroomId = classroomId;
     }
 }

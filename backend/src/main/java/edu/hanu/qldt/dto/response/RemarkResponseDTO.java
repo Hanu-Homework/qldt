@@ -4,11 +4,11 @@ public class RemarkResponseDTO {
 
     private String text;
 
-    private Long student_id;
+    private Long studentId;
 
-    public RemarkResponseDTO(String text, Long student_id) {
+    public RemarkResponseDTO(String text, Long studentId) {
         this.text = text;
-        this.student_id = student_id;
+        this.studentId = studentId;
 
     }
 
@@ -20,11 +20,11 @@ public class RemarkResponseDTO {
         this.text = text;
     }
 
-    public Long getStudent_id() {
-        return student_id;
+    public Long getStudentId() {
+        return studentId;
     }
 
-    public void setStudent_id(Long student_id) {
-        this.student_id = student_id;
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 }

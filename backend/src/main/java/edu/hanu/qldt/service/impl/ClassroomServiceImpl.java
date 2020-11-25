@@ -87,10 +87,10 @@ public class ClassroomServiceImpl implements ClassroomService {
     @Override
     public Classroom create(ClassroomResponseDTO classroomResponseDTO) {
         /* Finds teacher by id. */
-        Teacher teacher = teacherRepository.getOne(classroomResponseDTO.getHeadTeacher_id());
+        Teacher teacher = teacherRepository.getOne(classroomResponseDTO.getHeadTeacherId());
         Classroom classroom = new Classroom(
-                classroomResponseDTO.getStart_year(),
-                classroomResponseDTO.getEnd_year(),
+                classroomResponseDTO.getStartYear(),
+                classroomResponseDTO.getEndYear(),
                 classroomResponseDTO.getYear(),
                 classroomResponseDTO.getLetter(),
                 teacher
@@ -113,11 +113,11 @@ public class ClassroomServiceImpl implements ClassroomService {
         /* Finds classroom by id. */
         Classroom classroom = classroomRepository.getOne(id);
         /* Finds teacher by id. */
-        Teacher teacher = teacherRepository.getOne(classroomResponseDTO.getHeadTeacher_id());
+        Teacher teacher = teacherRepository.getOne(classroomResponseDTO.getHeadTeacherId());
 
         /* Updates the old classroom with a new data. */
-        classroom.setStart_year(classroomResponseDTO.getStart_year());
-        classroom.setEnd_year(classroomResponseDTO.getEnd_year());
+        classroom.setStartYear(classroomResponseDTO.getStartYear());
+        classroom.setEndYear(classroomResponseDTO.getEndYear());
         classroom.setHeadTeacher(teacher);
         classroom.setLetter(classroomResponseDTO.getLetter());
         classroom.setYear(classroomResponseDTO.getYear());

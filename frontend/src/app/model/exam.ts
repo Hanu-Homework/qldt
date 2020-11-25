@@ -4,8 +4,8 @@ import { Student } from "./student";
 export class Exam {
   id: number;
   mark: number;
-  written_at: string;
-  exam_type: string;
+  writtenAt: string;
+  examType: string;
   course: Course;
   student: Student;
 }

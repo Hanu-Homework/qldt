@@ -37,9 +37,9 @@ public class HeadTeacherController {
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "failed students don't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @GetMapping(value = "/headteacher/find-failed/{classroom_id}")
-    public List<FailedStudentDTO> findFailedStudentsInClass(@PathVariable Long classroom_id) {
-        return headTeacherService.findFailedStudentsInClass(classroom_id);
+    @GetMapping(value = "/headteacher/find-failed/{classroomId}")
+    public List<FailedStudentDTO> findFailedStudentsInClass(@PathVariable Long classroomId) {
+        return headTeacherService.findFailedStudentsInClass(classroomId);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_HEADTEACHER')")
@@ -49,8 +49,8 @@ public class HeadTeacherController {
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "failed students don't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @GetMapping(value = "/headteacher/show-result/{classroom_id}")
-    public List<ClassroomCourseResultDTO> showResultByCourse(@PathVariable Long classroom_id) {
-        return headTeacherService.showResultByCourse(classroom_id);
+    @GetMapping(value = "/headteacher/show-result/{classroomId}")
+    public List<ClassroomCourseResultDTO> showResultByCourse(@PathVariable Long classroomId) {
+        return headTeacherService.showResultByCourse(classroomId);
     }
 }

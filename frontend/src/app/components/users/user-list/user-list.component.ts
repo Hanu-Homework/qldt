@@ -14,7 +14,7 @@ import { isAdmin } from "src/app/shared/roles";
   styleUrls: ["./user-list.component.scss"],
 })
 export class UserListComponent implements OnInit {
-  searchText;
+  searchText: any;
   users: Observable<User[]>;
   isDataAvailable: boolean = false;
   currentUser: any = {};
@@ -51,20 +51,20 @@ export class UserListComponent implements OnInit {
   details(user_id: number) {
     this.userService.getById(user_id).subscribe((data) => {
       if (data.authorities[0].authority + "" === "ROLE_STUDENT") {
-        this.studentService
-          .findByUserId(user_id)
-          .subscribe((data) =>
-            this.router.navigate(["student/details", data.id])
-          );
+        this.studentService.findByUserId(user_id).subscribe((data) => {
+          console.log("student: " + user_id);
+          console.log(data);
+          return this.router.navigate(["student/details", data.id]);
+        });
       } else if (
         data.authorities[0].authority + "" === "ROLE_TEACHER" ||
         data.authorities[0].authority + "" === "ROLE_HEADTEACHER"
       ) {
-        this.teacherService
-          .findByUserId(user_id)
-          .subscribe((data) =>
-            this.router.navigate(["teacher/details", data.id])
-          );
+        this.teacherService.findByUserId(user_id).subscribe((data) => {
+          console.log("teacher: " + user_id);
+          console.log(data);
+          return this.router.navigate(["teacher/details", data.id]);
+        });
       }
     });
   }

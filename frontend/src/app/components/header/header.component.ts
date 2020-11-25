@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { UserService } from "src/app/service/user.service";
 import { AuthService } from "src/app/service/auth.service";
-import { Observable } from "rxjs";
 
 @Component({
   selector: "app-header",

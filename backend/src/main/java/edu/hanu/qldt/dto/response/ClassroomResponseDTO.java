@@ -2,41 +2,41 @@ package edu.hanu.qldt.dto.response;
 
 public class ClassroomResponseDTO {
 
-    private int start_year;
+    private int startYear;
 
-    private int end_year;
+    private int endYear;
 
     private int year;
 
     private char letter;
 
-    private Long headTeacher_id;
+    private Long headTeacherId;
 
     public ClassroomResponseDTO() {
     }
 
-    public ClassroomResponseDTO(int start_year, int end_year, int year, char letter, Long headTeacher_id) {
-        this.start_year = start_year;
-        this.end_year = end_year;
+    public ClassroomResponseDTO(int startYear, int endYear, int year, char letter, Long headTeacherId) {
+        this.startYear = startYear;
+        this.endYear = endYear;
         this.year = year;
         this.letter = letter;
-        this.headTeacher_id = headTeacher_id;
+        this.headTeacherId = headTeacherId;
     }
 
-    public int getStart_year() {
-        return start_year;
+    public int getStartYear() {
+        return startYear;
     }
 
-    public void setStart_year(int start_year) {
-        this.start_year = start_year;
+    public void setStartYear(int startYear) {
+        this.startYear = startYear;
     }
 
-    public int getEnd_year() {
-        return end_year;
+    public int getEndYear() {
+        return endYear;
     }
 
-    public void setEnd_year(int end_year) {
-        this.end_year = end_year;
+    public void setEndYear(int endYear) {
+        this.endYear = endYear;
     }
 
     public int getYear() {
@@ -55,11 +55,11 @@ public class ClassroomResponseDTO {
         this.letter = letter;
     }
 
-    public Long getHeadTeacher_id() {
-        return headTeacher_id;
+    public Long getHeadTeacherId() {
+        return headTeacherId;
     }
 
-    public void setHeadTeacher_id(Long headTeacher_id) {
-        this.headTeacher_id = headTeacher_id;
+    public void setHeadTeacherId(Long headTeacherId) {
+        this.headTeacherId = headTeacherId;
     }
 }

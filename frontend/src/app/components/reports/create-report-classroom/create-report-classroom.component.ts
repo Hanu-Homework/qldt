@@ -118,10 +118,10 @@ export class CreateReportClassroomComponent implements OnInit {
 
       if (marks[index] != null) {
         result[index].mark = marks[index];
-        result[index].course_id = course_id;
+        result[index].courseId = course_id;
         result[index].semester = semester;
         result[index].year = year;
-        result[index].student_id = entity.student.id;
+        result[index].studentId = entity.student.id;
       } else {
         result[index].mark = 0;
       }

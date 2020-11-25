@@ -63,10 +63,10 @@ export class CreateReportComponent implements OnInit {
   }
 
   onSubmit() {
-    this.report.student_id = this.student_id;
+    this.report.studentId = this.student_id;
     if (this.selectedOption) {
       this.report.semester = this.semester;
-      this.report.course_id = this.selectedOption.id;
+      this.report.courseId = this.selectedOption.id;
       this.reportService.create(this.report).subscribe(
         () => {
           this.refresh();

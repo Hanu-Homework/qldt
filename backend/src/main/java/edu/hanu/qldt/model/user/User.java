@@ -49,7 +49,8 @@ public class User implements UserDetails, Serializable {
     /**
      * Empty constructor.
      */
-    public User() {}
+    public User() {
+    }
 
     /**
      * Constructor to make a new instance.

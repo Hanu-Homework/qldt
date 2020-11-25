@@ -55,7 +55,7 @@ public class AttendanceServiceImpl implements AttendanceService {
         for(AttendanceResponseDTO attendanceResponseDTO: attendanceResponseDTOS) {
             if(attendanceResponseDTO.isMiss()) {
                 /* Finds student by id. */
-                Student student = studentRepository.getOne(attendanceResponseDTO.getStudent_id());
+                Student student = studentRepository.getOne(attendanceResponseDTO.getStudentId());
                 Attendance attendance = new Attendance(
                         student,
                         attendanceResponseDTO.getLesson(),

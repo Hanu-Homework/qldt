@@ -1,7 +1,7 @@
 export class ClassroomResponseDTO {
-  start_year: number;
-  end_year: number;
+  startYear: number;
+  endYear: number;
   year: number;
   letter: string;
-  headTeacher_id: number;
+  headTeacherId: number;
 }

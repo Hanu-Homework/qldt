@@ -2,7 +2,7 @@
   <app-panel-loader></app-panel-loader>
   <div class="container" *ngIf="userRole()">
     <div class="container">
-      <h2>Create</h2>
+      <h2>Create New Student</h2>
     </div>
     <div class="container">
       <form (ngSubmit)="onUserSubmit()" #form="ngForm" class="form">
@@ -77,7 +77,7 @@
             class="form-control"
             id="start_year"
             required
-            [(ngModel)]="student.start_year"
+            [(ngModel)]="student.startYear"
             name="start_year"
             placeholder="2017"
           />
@@ -131,45 +131,45 @@
           />
         </div>
         <div class="form-group">
-          <label for="parent1Name">Parent 1</label>
+          <label for="parent1Name">Father Name</label>
           <input
             type="text"
             class="form-control"
             id="parent1Name"
-            [(ngModel)]="student.parent1Name"
+            [(ngModel)]="student.fatherName"
             name="parent1Name"
             placeholder="Firstname Middlename Lastname"
           />
         </div>
         <div class="form-group">
-          <label for="parent2Name">Parent 2</label>
+          <label for="parent2Name">Mother Name</label>
           <input
             type="text"
             class="form-control"
             id="parent2Name"
-            [(ngModel)]="student.parent2Name"
+            [(ngModel)]="student.motherName"
             name="parent2Name"
             placeholder="Firstname Middlename Lastname"
           />
         </div>
         <div class="form-group">
-          <label for="parent1Phone">Parent 1 Phone</label>
+          <label for="parent1Phone">Father Phone Number</label>
           <input
             type="text"
             class="form-control"
             id="parent1Phone"
-            [(ngModel)]="student.parent1Phone"
+            [(ngModel)]="student.fatherPhone"
             name="parent1Phone"
             placeholder="parent 1 Phone"
           />
         </div>
         <div class="form-group">
-          <label for="parent2Phone">Parent 2 Phone</label>
+          <label for="parent2Phone">Mother Phone Number</label>
           <input
             type="text"
             class="form-control"
             id="parent2Phone"
-            [(ngModel)]="student.parent2Phone"
+            [(ngModel)]="student.motherPhone"
             name="parent2Phone"
             placeholder="parent 2 Phone"
           />

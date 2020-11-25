@@ -8,19 +8,19 @@ public class ReportResponseDTO {
 
     private int mark;
 
-    private Long student_id;
+    private Long studentId;
 
-    private Long course_id;
+    private Long courseId;
 
     public ReportResponseDTO() {
     }
 
-    public ReportResponseDTO(int year, int semester, int mark, Long student_id, Long course_id) {
+    public ReportResponseDTO(int year, int semester, int mark, Long studentId, Long courseId) {
         this.year = year;
         this.semester = semester;
         this.mark = mark;
-        this.student_id = student_id;
-        this.course_id = course_id;
+        this.studentId = studentId;
+        this.courseId = courseId;
     }
 
     public int getYear() {
@@ -47,19 +47,19 @@ public class ReportResponseDTO {
         this.mark = mark;
     }
 
-    public Long getStudent_id() {
-        return student_id;
+    public Long getStudentId() {
+        return studentId;
     }
 
-    public void setStudent_id(Long student_id) {
-        this.student_id = student_id;
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 
-    public Long getCourse_id() {
-        return course_id;
+    public Long getCourseId() {
+        return courseId;
     }
 
-    public void setCourse_id(Long course_id) {
-        this.course_id = course_id;
+    public void setCourseId(Long courseId) {
+        this.courseId = courseId;
     }
 }

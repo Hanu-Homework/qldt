@@ -27,13 +27,13 @@ public class Classroom {
      * Year when class started.
      */
     @Column(name = "start_year", nullable = false, length = 4)
-    private int start_year;
+    private int startYear;
 
     /**
      * Year when class will end.
      */
     @Column(name = "end_year", nullable = false, length = 4)
-    private int end_year;
+    private int endYear;
 
     /**
      * Current school year.
@@ -55,15 +55,15 @@ public class Classroom {
     /**
      * Constructor to make a new instance.
      *
-     * @param start_year Year when class will end.
-     * @param end_year Year when class will end.
+     * @param startYear Year when class will end.
+     * @param endYear Year when class will end.
      * @param year Current school year.
      * @param letter Class letter to identify the class in the school.
      * @param headTeacher The headteacher of the class.
      */
-    public Classroom(int start_year, int end_year, int year, char letter, Teacher headTeacher) {
-        this.start_year = start_year;
-        this.end_year = end_year;
+    public Classroom(int startYear, int endYear, int year, char letter, Teacher headTeacher) {
+        this.startYear = startYear;
+        this.endYear = endYear;
         this.year = year;
         this.letter = letter;
         this.headTeacher = headTeacher;
@@ -97,20 +97,20 @@ public class Classroom {
         this.id = id;
     }
 
-    public int getStart_year() {
-        return start_year;
+    public int getStartYear() {
+        return startYear;
     }
 
-    public void setStart_year(int start_year) {
-        this.start_year = start_year;
+    public void setStartYear(int start_year) {
+        this.startYear = start_year;
     }
 
-    public int getEnd_year() {
-        return end_year;
+    public int getEndYear() {
+        return endYear;
     }
 
-    public void setEnd_year(int end_year) {
-        this.end_year = end_year;
+    public void setEndYear(int end_year) {
+        this.endYear = end_year;
     }
 
     public int getYear() {

@@ -43,8 +43,8 @@ public class ClassroomController {
         return classroomService.findAll();
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TEACHER') or hasRole('ROLE_HEADTEACHER')" +
-            "or @securityService.hasStudentAccess(principal.id, #student_id)")
+//    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_TEACHER') or hasRole('ROLE_HEADTEACHER')" +
+//            "or @securityService.hasStudentAccess(principal.id, #student_id)")
     @ApiOperation(value = "${ClassroomController.findById}")
     @ApiResponses(value = {
             @ApiResponse(code = 400, message = "Something went wrong"),
@@ -112,11 +112,11 @@ public class ClassroomController {
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Classroom or Course don't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @PutMapping(value = "/classrooms/setCourse/{id}")
-    public String setCourse(@PathVariable Long classroom_id,
-                            @RequestBody Long course_id) {
-        classroomService.setCourse(classroom_id, course_id);
-        return course_id.toString();
+    @PutMapping(value = "/classrooms/setCourse/{classroomId}")
+    public String setCourse(@PathVariable Long classroomId,
+                            @RequestBody Long courseId) {
+        classroomService.setCourse(classroomId, courseId);
+        return courseId.toString();
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -126,11 +126,11 @@ public class ClassroomController {
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 404, message = "Classroom or Course don't found"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    @PutMapping(value = "/classrooms/unsetCourse/{id}")
-    public String unsetCourse(@PathVariable Long classroom_id,
-                            @RequestBody Long course_id) {
-        classroomService.unsetCourse(classroom_id, course_id);
-        return course_id.toString();
+    @PutMapping(value = "/classrooms/unsetCourse/{classroomId}")
+    public String unsetCourse(@PathVariable Long classroomId,
+                            @RequestBody Long courseId) {
+        classroomService.unsetCourse(classroomId, courseId);
+        return courseId.toString();
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")

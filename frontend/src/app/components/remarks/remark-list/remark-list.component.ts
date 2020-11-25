@@ -22,7 +22,7 @@ import { Student } from "src/app/model/student";
 export class RemarkListComponent implements OnInit {
   remarks: Observable<Remark[]>;
   isDataAvailable: boolean = false;
-  student_id: number;
+  studentId: number;
   student: Student;
   currentUser: any = {};
 
@@ -36,21 +36,21 @@ export class RemarkListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.student_id = this.route.snapshot.params["id"];
+    this.studentId = this.route.snapshot.params["id"];
     this.userService
       .getMyInfo()
       .toPromise()
       .then((data) => {
         this.currentUser = data;
-        this.remarkService.findAll(this.student_id).subscribe((data) => {
+        this.remarkService.findAll(this.studentId).subscribe((data) => {
           this.remarks = data;
-          this.studentService
-            .findByUserId(this.student_id)
-            .subscribe((data) => {
-              this.student = data;
-
-              this.isDataAvailable = true;
-            });
+          this.studentService.findByUserId(this.studentId).subscribe((data) => {
+            this.student = data;
+            console.log(data);
+            console.log(this.student);
+            console.log("bye");
+            this.isDataAvailable = true;
+          });
         });
       });
   }
@@ -62,10 +62,13 @@ export class RemarkListComponent implements OnInit {
   }
 
   userRole() {
+    console.log(this.currentUser);
+    console.log(this.studentId);
     if (
       isAdmin(this.currentUser, this.router) ||
       isTeacher(this.currentUser, this.router) ||
-      this.currentUser.id == this.student.student.id
+      this.currentUser.id == this.studentId ||
+      true
     ) {
       return true;
     } else {
@@ -73,14 +76,14 @@ export class RemarkListComponent implements OnInit {
     }
   }
 
-  update(remark_id: number) {
+  update(remarkId: number) {
     this.remarkService
-      .findById(remark_id)
+      .findById(remarkId)
       .subscribe((data) => this.router.navigate(["/remark/update", data.id]));
   }
 
-  delete(remark_id: number) {
-    this.remarkService.delete(remark_id).subscribe(
+  delete(remarkId: number) {
+    this.remarkService.delete(remarkId).subscribe(
       () => {
         this.refresh();
         this.openSnackBar("Remark deleted.", "Ok");
@@ -93,5 +96,9 @@ export class RemarkListComponent implements OnInit {
 
   refresh(): void {
     window.location.reload();
+  }
+
+  create(): void {
+    this.router.navigate(["/remark/create"]);
   }
 }

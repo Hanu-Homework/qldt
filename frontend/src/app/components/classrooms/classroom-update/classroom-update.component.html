@@ -35,7 +35,7 @@
             class="form-control"
             id="start_year"
             required
-            [(ngModel)]="classroom.start_year"
+            [(ngModel)]="classroom.startYear"
             name="start_year"
           />
         </div>
@@ -46,7 +46,7 @@
             class="form-control"
             id="end_year"
             required
-            [(ngModel)]="classroom.end_year"
+            [(ngModel)]="classroom.endYear"
             name="end_year"
           />
         </div>
@@ -62,7 +62,9 @@
             </option>
           </select>
         </div>
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success" style="margin-left: 10px">
+          Submit
+        </button>
         <button (click)="goBack()" class="btn btn-dark">Back</button>
       </form>
     </div>

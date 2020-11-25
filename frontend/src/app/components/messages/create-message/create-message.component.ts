@@ -41,14 +41,15 @@ export class CreateMessageComponent implements OnInit {
   onSubmit() {
     this.messageService.create(this.message).subscribe(
       () => {
-        this.reset();
         this.openSnackBar("Message created.", "Ok");
+        this.reset();
+        setTimeout(() => this.router.navigate(["/"]), 2000);
       },
       (error) => {
+        console.log(error);
         this.openSnackBar("Failed.", "Ok");
       }
     );
-    this.refresh();
   }
 
   reset() {

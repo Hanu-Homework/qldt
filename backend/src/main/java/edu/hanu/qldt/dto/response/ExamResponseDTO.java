@@ -6,23 +6,23 @@ public class ExamResponseDTO {
 
     private int mark;
 
-    private LocalDate written_at;
+    private LocalDate writtenAt;
 
     private String examType;
 
-    private Long course_id;
+    private Long courseId;
 
-    private Long student_id;
+    private Long studentId;
 
     public ExamResponseDTO() {
     }
 
-    public ExamResponseDTO(int mark, LocalDate written_at, String examType, Long course_id, Long student_id) {
+    public ExamResponseDTO(int mark, LocalDate writtenAt, String examType, Long courseId, Long studentId) {
         this.mark = mark;
-        this.written_at = written_at;
+        this.writtenAt = writtenAt;
         this.examType = examType;
-        this.course_id = course_id;
-        this.student_id = student_id;
+        this.courseId = courseId;
+        this.studentId = studentId;
     }
 
     public int getMark() {
@@ -33,12 +33,12 @@ public class ExamResponseDTO {
         this.mark = mark;
     }
 
-    public LocalDate getWritten_at() {
-        return written_at;
+    public LocalDate getWrittenAt() {
+        return writtenAt;
     }
 
-    public void setWritten_at(LocalDate written_at) {
-        this.written_at = written_at;
+    public void setWrittenAt(LocalDate writtenAt) {
+        this.writtenAt = writtenAt;
     }
 
     public String getExamType() {
@@ -49,19 +49,19 @@ public class ExamResponseDTO {
         this.examType = examType;
     }
 
-    public Long getCourse_id() {
-        return course_id;
+    public Long getCourseId() {
+        return courseId;
     }
 
-    public void setCourse_id(Long course_id) {
-        this.course_id = course_id;
+    public void setCourseId(Long courseId) {
+        this.courseId = courseId;
     }
 
-    public Long getStudent_id() {
-        return student_id;
+    public Long getStudentId() {
+        return studentId;
     }
 
-    public void setStudent_id(Long student_id) {
-        this.student_id = student_id;
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 }

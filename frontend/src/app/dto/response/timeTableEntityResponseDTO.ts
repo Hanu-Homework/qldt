@@ -1,8 +1,7 @@
 export class TimeTableEntityResponseDTO {
-
-    day: number;
-    lessonNumber: number;
-    room_id: number;
-    course_id: number;
-    classroom_id: number;
+  day: number;
+  lessonNumber: number;
+  roomId: number;
+  courseId: number;
+  classroomId: number;
 }

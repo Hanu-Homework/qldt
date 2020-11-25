@@ -118,10 +118,10 @@ export class CreateExamClassroomComponent implements OnInit {
 
     for (let entity of entities) {
       result.push(new ExamResponseDTO());
-      result[index].course_id = course_id;
-      result[index].student_id = entity.student.id;
+      result[index].courseId = course_id;
+      result[index].studentId = entity.student.id;
       result[index].examType = etype;
-      result[index].written_at = written_at;
+      result[index].writtenAt = written_at;
       if (marks[index] != null) {
         result[index].mark = marks[index];
       } else {

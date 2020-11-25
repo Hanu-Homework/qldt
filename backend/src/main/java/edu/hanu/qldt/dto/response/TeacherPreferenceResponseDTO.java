@@ -2,7 +2,7 @@ package edu.hanu.qldt.dto.response;
 
 public class TeacherPreferenceResponseDTO {
 
-    private Long teacher_id;
+    private Long teacherId;
 
     private double testWeight;
 
@@ -12,8 +12,14 @@ public class TeacherPreferenceResponseDTO {
 
     private double homeworkWeight;
 
-    public TeacherPreferenceResponseDTO(Long teacher_id, double testWeight, double topicTestWeight, double repetitionWeight, double homeworkWeight) {
-        this.teacher_id = teacher_id;
+    public TeacherPreferenceResponseDTO(
+            Long teacherId,
+            double testWeight,
+            double topicTestWeight,
+            double repetitionWeight,
+            double homeworkWeight
+    ) {
+        this.teacherId = teacherId;
         this.testWeight = testWeight;
         this.topicTestWeight = topicTestWeight;
         this.repetitionWeight = repetitionWeight;
@@ -24,12 +30,12 @@ public class TeacherPreferenceResponseDTO {
     public TeacherPreferenceResponseDTO() {
     }
 
-    public Long getTeacher_id() {
-        return teacher_id;
+    public Long getTeacherId() {
+        return teacherId;
     }
 
-    public void setTeacher_id(Long teacher_id) {
-        this.teacher_id = teacher_id;
+    public void setTeacherId(Long teacherId) {
+        this.teacherId = teacherId;
     }
 
     public double getTestWeight() {

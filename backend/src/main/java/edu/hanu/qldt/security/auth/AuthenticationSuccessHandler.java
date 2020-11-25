@@ -21,12 +21,19 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
 
     @Value("${jwt.expires_in}")
     private int EXPIRES_IN;
+
     @Value("${jwt.cookie}")
     private String TOKEN_COOKIE;
+
+    private final TokenHelper tokenHelper;
+
+    private final ObjectMapper objectMapper;
+
     @Autowired
-    private TokenHelper tokenHelper;
-    @Autowired
-    private ObjectMapper objectMapper;
+    public AuthenticationSuccessHandler(TokenHelper tokenHelper, ObjectMapper objectMapper) {
+        this.tokenHelper = tokenHelper;
+        this.objectMapper = objectMapper;
+    }
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
