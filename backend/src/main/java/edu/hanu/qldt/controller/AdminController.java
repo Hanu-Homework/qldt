@@ -54,7 +54,6 @@ public class AdminController {
             @ApiResponse(code = 404, message = "The archive cannot created"),
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")
     })
-
     @GetMapping(value = "/admin/createArchive")
     public void createArchive() {
         adminService.createArchive();

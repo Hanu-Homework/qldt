@@ -2,39 +2,27 @@
   <app-panel-loader></app-panel-loader>
   <div class="container" *ngIf="hasSignedIn()">
     <div class="container">
-      <h2>Timetable</h2>
+      <h2 style="margin-top: 20px;">Timetable</h2>
     </div>
     <div class="container">
       <table class="table table-sm">
         <thead class="thead-dark">
-          <th>#</th>
-          <th>Monday</th>
-          <th>Tuesday</th>
-          <th>Wednesday</th>
-          <th>Thurstday</th>
-          <th>Friday</th>
+          <th style="text-align: center;">#</th>
+          <th style="text-align: center;">Monday</th>
+          <th style="text-align: center;">Tuesday</th>
+          <th style="text-align: center;">Wednesday</th>
+          <th style="text-align: center;">Thurstday</th>
+          <th style="text-align: center;">Friday</th>
         </thead>
         <tbody>
-          <tr *ngFor="let row of timetable; index as counter">
-            <td>
-              <b>{{ counter + 1 }}</b>
+          <tr *ngFor="let row of timetable; index as counter;">
+            <td style="text-align: center;">
+              <b>{{ counter < 8 ? counter + 1 : "" }}</b>
             </td>
             <td *ngFor="let entity of row">
-              <div *ngIf="!!entity">
-                <table class="table-sm">
-                  <tr>
-                    <td>Course:</td>
-                    <td>
-                      <b>{{ entity.course.title }}</b>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Classroom:</td>
-                    <td>
-                      <b>{{ entity.room.classroomNumber }}</b>
-                    </td>
-                  </tr>
-                </table>
+              <div *ngIf="!!entity" style="min-height: 69px; text-align: center; display: flex; align-items: center; flex-direction: column; justify-items: center; margin: auto;">
+                <strong>{{ entity.course.title }} </strong>
+                {{ entity.course.teacher.teacher.fullName }}
               </div>
             </td>
           </tr>

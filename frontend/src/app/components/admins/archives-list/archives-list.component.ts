@@ -21,7 +21,8 @@ export class ArchivesListComponent implements OnInit {
     private userService: UserService,
     private adminService: AdminService,
     private router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.userService

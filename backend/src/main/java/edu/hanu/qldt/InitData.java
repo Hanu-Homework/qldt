@@ -84,7 +84,7 @@ public class InitData {
             userService.save(new UserResponseDTO(username, password, "admin", "ROLE_ADMIN"));
             Logger.info("Username: {0}\nPassword: {1}", username, password);
         }
-        // testData();
+        testData();
     }
 
     private void testData() {
@@ -137,11 +137,14 @@ public class InitData {
 
     private void testDataTeacher() {
         List<String> usernames = new ArrayList<>();
+
+        String[] teacherNames = {"Đặng Ngân", "Lê Hương", "Ngọc Nhàn", "Trung Hiếu", "Thu Thủy"};
+
         for (int i = 1; i < 11; i++) {
             UserResponseDTO userResponseDTO = new UserResponseDTO(
                     "teacher" + i,
                     "teacher",
-                    "teacher" + i + "'s fullname",
+                    teacherNames[i % teacherNames.length],
                     "ROLE_TEACHER"
             );
             userService.save(userResponseDTO);
@@ -152,7 +155,7 @@ public class InitData {
             teacherService.create(new TeacherResponseDTO(
                     username,
                     username + "@gmail.com",
-                    "+84 90 484 2084"
+                    "+80 90 858 2084"
             ));
         }
     }
@@ -161,78 +164,78 @@ public class InitData {
         classroomService.create(new ClassroomResponseDTO(
                 2018,
                 2022,
-                4,
-                'c',
+                10,
+                'A',
                 2L
         ));
         classroomService.create(new ClassroomResponseDTO(
                 2018,
                 2022,
-                3,
-                'c',
+                12,
+                'B',
                 3L
         ));
     }
 
     private void testDataCourse() {
         courseService.create(new CourseResponseDTO(
-                "System Architecture Design",
-                3,
+                "Mathematics",
+                10,
                 1L
         ));
         courseService.create(new CourseResponseDTO(
-                "Embedded System",
-                3,
+                "Literature",
+                11,
                 2L
         ));
         courseService.create(new CourseResponseDTO(
-                "Discrete Mathematics",
-                2,
+                "English",
+                12,
                 3L
         ));
         courseService.create(new CourseResponseDTO(
                 "Calculus",
-                2,
+                10,
                 4L
         ));
         courseService.create(new CourseResponseDTO(
-                "Artificial Intelligence",
-                3,
+                "History",
+                11,
                 5L
         ));
         courseService.create(new CourseResponseDTO(
-                "Database",
-                3,
+                "Geography",
+                12,
                 6L
         ));
         courseService.create(new CourseResponseDTO(
-                "Programming 1",
-                2,
+                "Physics",
+                10,
                 7L
         ));
         courseService.create(new CourseResponseDTO(
-                "Programming 2",
-                2,
+                "Chemistry",
+                11,
                 7L
         ));
         courseService.create(new CourseResponseDTO(
-                "Principles Of Operating System",
-                2,
+                "Civic Education",
+                12,
                 8L
         ));
         courseService.create(new CourseResponseDTO(
-                "Software Engineering 1",
-                3,
+                "Biology",
+                10,
                 9L
         ));
         courseService.create(new CourseResponseDTO(
-                "Software Engineering 2",
-                3,
+                "Informatics",
+                11,
                 10L
         ));
 
         for (Long i = 1L; i < 3L; i++)
-            for (long j = 1L; j < 12L; j++)
+            for (long j = 1L; j < 8L; j++)
                 classroomService.setCourse(i, j);
     }
 
@@ -340,11 +343,11 @@ public class InitData {
     private void testDataTimeTable() {
         List<Course> courses = courseService.findAll();
         TimeTableEntityResponseDTO[][] timeTableEntityResponseDTOS =
-                new TimeTableEntityResponseDTO[12][5];
+                new TimeTableEntityResponseDTO[8][5];
         List<Room> rooms = roomService.findAll();
         Random random = new Random();
 
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 5; j++) {
                 timeTableEntityResponseDTOS[i][j] = new TimeTableEntityResponseDTO();
                 Course course = courses.get(random.nextInt(courses.size()));
@@ -358,7 +361,7 @@ public class InitData {
                 timeTableService.create(timeTableEntityResponseDTOS[i][j]);
             }
         }
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 5; j++) {
                 timeTableEntityResponseDTOS[i][j] = new TimeTableEntityResponseDTO();
                 Course course = courses.get(random.nextInt(courses.size()));
